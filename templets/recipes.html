@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='media/favicon.ico') }}">
-    <link rel="stylesheet" href="../static/home.css
+    <link rel="stylesheet" href="/static/home.css
     ">
     <title>Recipe Lab : Recipes</title>
 </head>
@@ -21,13 +21,13 @@
             <div class="middle-nav">
                 <ul class="middle-nav-tabs">
                     <li class="middle-nav-tab">
-                        <a href="templets/index.html" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+                        <a href="../index.html" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
                     </li>
                     <li class="middle-nav-tab">
                         <a href="#" class="{{ 'active' if request.endpoint == 'Recipes' else '' }}">Recipes</a>
                     </li>
                     <li class="middle-nav-tab">
-                        <a href="templets/about_us.html" class="{{ 'active' if request.endpoint == 'about_us' else '' }}">About</a>
+                        <a href="/templets/about_us.html" class="{{ 'active' if request.endpoint == 'about_us' else '' }}">About</a>
                     </li>
                 </ul>
             </div>
