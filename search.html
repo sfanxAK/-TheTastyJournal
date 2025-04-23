@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Results</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    .results {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Results</h1>
+  <div id="results"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q')?.toLowerCase();
+
+    async function fetchAndDisplayRecipes() {
+      const res = await fetch('/recipes.json'); // adjust path if needed
+      const recipes = await res.json();
+
+      const filtered = recipes.filter(recipe =>
+        recipe.name.toLowerCase().includes(query)
+      );
+
+      const resultsDiv = document.getElementById("results");
+      if (filtered.length === 0) {
+        resultsDiv.innerHTML = `<p>No results found for <strong>${query}</strong>.</p>`;
+        return;
+      }
+
+      resultsDiv.innerHTML = filtered.map(recipe => `
+        <div>
+          <h3>${recipe.name}</h3>
+          <p>${recipe.description}</p>
+          <img src="${recipe.image}" alt="${recipe.name}" width="200"/>
+        </div>
+      `).join("");
+    }
+
+    if (query) {
+      fetchAndDisplayRecipes();
+    } else {
+      document.getElementById("results").innerHTML = "No search query provided.";
+    }
+  </script>
+</body>
+</html>
