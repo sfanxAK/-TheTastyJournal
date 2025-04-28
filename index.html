@@ -15,7 +15,25 @@
           }
         }
       </script>
-      
+      <script>
+        function subscribe() {
+          const emailInput = document.getElementById("emailInput");
+          const messageBox = document.getElementById("messageBox");
+          const email = emailInput.value;
+    
+          // Simple email validation
+          const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    
+          if (emailPattern.test(email)) {
+            messageBox.textContent = "Thank you for subscribing!";
+            messageBox.className = "message";
+            emailInput.value = "";
+          } else {
+            messageBox.textContent = "Please enter a valid email address.";
+            messageBox.className = "message error";
+          }
+        }
+      </script>
 </head>
 <body>
     <!-- Header -->
@@ -139,24 +157,54 @@
     <!-- Footer -->
     <footer>
         <div class="Footer-Section">
-            <div class="footer-container">
+            <div class="footer-container1">
                 <div class="logo-footer-container">
                     <img class="logo-footer" src="static/media/logo-TTJ.png" alt="Footer Logo">
                 </div>
-                <div class="icons">
-                    <a class="Social-icon Facebook_icon" href="#" aria-label="Facebook">
-                        <img src="{{ url_for('static', filename='media/facebook_icon.png') }}" alt="Facebook logo">
-                    </a>
-                    <a class="Social-icon Twitter_icon" href="#" aria-label="Twitter">
-                        <img src="{{ url_for('static', filename='media/x_icon.png') }}" alt="Twitter logo">
-                    </a>
-                    <a class="Social-icon Instagram_icon" href="#" aria-label="Instagram">
-                        <img src="{{ url_for('static', filename='media/Instagram_icon.png') }}" alt="Instagram logo">
-                    </a>
-                </div>
+                <div class="social-icons-section">
+                    <h2>Let's be friends!</h2>
+                    <div class="footer-social-icons">
+                        <a href="#"><img src="static/media/pinterest.png" alt="Pinterest" class="icon" /></a>
+                        <a href="#"><img src="static/media/instagram.png" alt="Instagram" class="icon" /></a>
+                        <a href="#"><img src="static/media/twitter.png" alt="Twitter" class="icon" /></a>
+                    </div>
+                </div>            
             </div>
-            <p>&copy; 2024 The Tasty Journal. All rights reserved.</p>
+            
+            <div class="footer-container2">
+                <div class="nav-section">
+                    <div class="footer-nav1">
+                        <nav class="footer-navbar1">
+                            <a href="#">My Recipes</a>
+                            <a href="#">New Cookbook!</a>
+                            <a href="#">Recipes</a>
+                            <a href="#">By Category</a>
+                            <a href="#">About</a>
+                          </nav>
+                    </div>
+                    <div class="footer-nav2">
+                        <nav class="footer-navbar2">
+                            <a href="#">My Recipes</a>
+                            <a href="#">New Cookbook!</a>
+                            <a href="#">Recipes</a>
+                        </nav>
+                    </div>
+                </div>
+                    <div class="subemail-section">
+                        <div class="subemail-title">
+                            <h2>Ready to cook?</h2>
+                            <p>Sign up for our weekly newsletters!</p>
+                        </div>
+                        <div class="email-input-section">
+                            <input type="email" id="emailInput" placeholder="Enter your email" required />
+                            <button onclick="subscribe()">Subscribe</button>
+                            <div class="message" id="messageBox"></div>
+                        </div>
+                    </div>
+            </div>
+
         </div>
+        <p> &copy; 2025 The Tasty Journal. All rights reserved.</p>
     </footer>
 </body>
 </html>
