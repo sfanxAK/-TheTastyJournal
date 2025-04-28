@@ -415,45 +415,57 @@ main {
 
 /* ===== Footer ===== */
 
-.Footer-Section {
-  padding: 3rem 1rem 1rem 1rem;
-  background-color: white;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 0 17px #dbdada;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: auto;
-  margin: 0;
-  padding: 2rem 7rem 0 4rem;
+.footer-section {
+background: white;
+position: relative;
+margin: 0;
+padding-top: 1rem;
+}
+.container {
+  margin: 2rem 2rem 1rem 2rem;
 }
 
-/* container 1 */
-
-.footer-container1 {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  margin: 0;
-  margin-bottom: 15px;
-
+.row {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
 }
-.logo-footer-container {
-  width: fit-content;
-  height: fit-content;
+.footer-pattern img {
+position: absolute;
+top: 0;
+left: 0;
+height: 330px;
+background-size: cover;
+background-position: 100% 100%;
 }
-.logo-footer {
-  width: 11rem;
+.footer-logo {
+margin-bottom: 30px;
+}
+.footer-logo img {
+  max-width: 200px;
+}
+.footer-text p {
+padding-top: 2rem;
+margin-bottom: 14px;
+font-size: 14px;
+color: #7e7e7e;
+line-height: 28px;
 }
 
-.social-icons-section h2 {
-  margin-bottom: 20px;
-  font-size: 25px;
+.footer-social-icon {
+  margin-left: 20px;
 }
-
+.footer-social-icon span {
+color: black;
+display: block;
+font-size: 20px;
+font-weight: 700;
+font-family: 'Poppins', sans-serif;
+margin-bottom: 20px;
+}
 .footer-social-icons {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   gap: 1rem;
 }
 .footer-social-icons a img{
@@ -463,75 +475,87 @@ main {
   transform: scale(1.1);
 }
 
-/* container 2 */
-.footer-container2 {
-  width: fit-content;
-  min-height: 300px;
-  display: flex;
-  flex-direction: row;
-  gap: 6rem;  
-  padding-top: 40px;
+.footer-widget-heading h3 {
+color: #151515;
+font-size: 20px;
+font-weight: 600;
+margin-bottom: 40px;
+position: relative;
 }
-.nav-section {
-  display: flex;
-  flex-direction: row;
+.footer-widget-heading h3::before {
+content: "";
+position: absolute;
+left: 0;
+bottom: -15px;
+height: 2px;
+width: 50px;
+background: crimson;
+}
+.footer-widget-2{
+  margin-left: 8rem;
+}
+.footer-widget-2 ul li {
+display: inline-block;
+float: left;
+width: 50%;
+margin-bottom: 12px;
+}
+.footer-widget-2 ul li a:hover{
+color: crimson;
+}
+.footer-widget-2 ul li a {
+color: #878787;
+text-transform: capitalize;
 }
 
-.footer-navbar1 {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0.8rem 0;
+.subscribe-form {
+position: relative;
+overflow: hidden;
+margin-top: 20px;
 }
-.footer-nav1 nav{
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 140px;
+.subscribe-form input {
+width: 100%;
+padding: 14px 28px;
+background: crimson;
+color: #fff;
+border:1px solid black;
+border-radius: 6px;
 }
-.footer-navbar1 a{
-  color: rgb(35, 33, 33);
+.subscribe-form input::placeholder {
+  color:#f5f5f5;
+}
+.subscribe-form input:focus {
   text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.9rem;
 }
-.footer-navbar1 a:hover {
-  color: #c41a1a;
+.subscribe-form button {
+  cursor: pointer;
+  position: absolute;
+  right: 4px;
+  top: 6px;
+  background: crimson;
+  padding: 5px 20px;
+  border: none;
 }
-
-.footer-navbar2 {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 140px;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0.8rem 0;  
+.subscribe-form button:hover{
+  transform: scale(1.1);
 }
-
-.footer-navbar2 a{
-  color: #666;
-  text-decoration: none;
-  font-size: 0.9rem;
+.subscribe-form button i {
+color: #fff;
+font-size: 26px;
+transform: rotate(-6deg);
 }
-.footer-navbar2 a:hover {
-  color: #c41a1a;
+.copyright-area{
+background: #202020;
+padding: 10px 0;
 }
-
-.subemail-section {
-  display:flex;
-  flex-direction: column;
-  gap: 30px;
-  width: fit-content;
-  border: 2px solid red;
+.copyright-text p {
+margin: 0;
+font-size: 14px;
+color: #ffffff;
 }
 
-footer p {
-  text-align: center;
-  color: #4b5563;
-  margin-top: 0.5rem;
-}
+
+
 
 /* Menu Button for Mobile */
 .menu-btn {

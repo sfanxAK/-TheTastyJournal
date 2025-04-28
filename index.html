@@ -6,6 +6,8 @@
     <link rel="icon" href="static/media/logo-TTJ.png">
     <link rel="stylesheet" href="./static/style2.css">
     <title>The Tasty Journal</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script>
         function handleSearch(event) {
           event.preventDefault();
@@ -155,56 +157,74 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="Footer-Section">
-            <div class="footer-container1">
-                <div class="logo-footer-container">
-                    <img class="logo-footer" src="static/media/logo-TTJ.png" alt="Footer Logo">
-                </div>
-                <div class="social-icons-section">
-                    <h2>Let's be friends!</h2>
-                    <div class="footer-social-icons">
-                        <a href="#"><img src="static/media/pinterest.png" alt="Pinterest" class="icon" /></a>
-                        <a href="#"><img src="static/media/instagram.png" alt="Instagram" class="icon" /></a>
-                        <a href="#"><img src="static/media/twitter.png" alt="Twitter" class="icon" /></a>
-                    </div>
-                </div>            
-            </div>
-            
-            <div class="footer-container2">
-                <div class="nav-section">
-                    <div class="footer-nav1">
-                        <nav class="footer-navbar1">
-                            <a href="#">My Recipes</a>
-                            <a href="#">New Cookbook!</a>
-                            <a href="#">Recipes</a>
-                            <a href="#">By Category</a>
-                            <a href="#">About</a>
-                          </nav>
-                    </div>
-                    <div class="footer-nav2">
-                        <nav class="footer-navbar2">
-                            <a href="#">My Recipes</a>
-                            <a href="#">New Cookbook!</a>
-                            <a href="#">Recipes</a>
-                        </nav>
-                    </div>
-                </div>
-                    <div class="subemail-section">
-                        <div class="subemail-title">
-                            <h2>Ready to cook?</h2>
-                            <p>Sign up for our weekly newsletters!</p>
-                        </div>
-                        <div class="email-input-section">
-                            <input type="email" id="emailInput" placeholder="Enter your email" required />
-                            <button onclick="subscribe()">Subscribe</button>
-                            <div class="message" id="messageBox"></div>
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="/static/media/logo-TTJ.png" class="img-fluid" alt="logo"></a>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Follow us</span>
+                                <div class="footer-social-icons">
+                                    <a href="#"><img src="static/media/pinterest.png" alt="Pinterest" class="icon" /></a>
+                                    <a href="#"><img src="static/media/instagram.png" alt="Instagram" class="icon" /></a>
+                                    <a href="#"><img src="static/media/twitter.png" alt="Twitter" class="icon" /></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget-2">
+                            <div class="footer-widget-heading">
+                                <h3>Useful Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">about</a></li>
+                                <li><a href="#">services</a></li>
+                                <li><a href="#">portfolio</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Expert Team</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Latest News</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget-3">
+                            <div class="footer-widget-heading">
+                                <h3>Subscribe</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-        <p> &copy; 2025 The Tasty Journal. All rights reserved.</p>
+        <div class="copyright-area">
+            <div class="container-copyright">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2025, All Right Reserved The Tasty Journal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
