@@ -16,24 +16,17 @@
             window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
           }
         }
-      </script>
-      <script>
-        function subscribe() {
-          const emailInput = document.getElementById("emailInput");
-          const messageBox = document.getElementById("messageBox");
-          const email = emailInput.value;
     
-          // Simple email validation
-          const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        // Toggle mobile menu
+        function toggleMenu() {
+          const navBarMobile = document.querySelector('.nav-bar-mobile');
+          navBarMobile.classList.toggle('active');
+        }
     
-          if (emailPattern.test(email)) {
-            messageBox.textContent = "Thank you for subscribing!";
-            messageBox.className = "message";
-            emailInput.value = "";
-          } else {
-            messageBox.textContent = "Please enter a valid email address.";
-            messageBox.className = "message error";
-          }
+        // Close mobile menu
+        function closeMenu() {
+          const navBarMobile = document.querySelector('.nav-bar-mobile');
+          navBarMobile.classList.remove('active');
         }
       </script>
 </head>
@@ -43,32 +36,55 @@
         <div class="top-bar">
           <div class="nav-right">
             <div class="logo">
-                <img src="static/media/logo-TTJ.png" alt="Logo" />
+              <img src="static/media/logo-TTJ.png" alt="Logo" />
             </div>
     
-              <nav class="nav-bar">
-                <a href="#">My Recipes</a>
-                <a href="#">New Cookbook!</a>
-                <a href="#">Recipes</a>
-                <a href="#">By Category</a>
-                <a href="#">About</a>
-              </nav>
-          </div>  
-
+            <nav class="nav-bar">
+              <a href="#">My Recipes</a>
+              <a href="#">New Cookbook!</a>
+              <a href="#">Recipes</a>
+              <a href="#">By Category</a>
+              <a href="#">About</a>
+            </nav>
+          </div>
+    
           <div class="nav-left">
+            <button class="toggle-menu" onclick="toggleMenu()">&#9776;</button>
+    
             <form class="search-box" onsubmit="handleSearch(event)">
               <input type="text" id="searchInput" placeholder="Search Recipes..." />
               <div class="search"></div>
             </form>
-          
+    
             <div class="social-icons">
               <a href="#"><img src="static/media/pinterest.png" alt="Pinterest" class="icon" /></a>
               <a href="#"><img src="static/media/instagram.png" alt="Instagram" class="icon" /></a>
               <a href="#"><img src="static/media/twitter.png" alt="Twitter" class="icon" /></a>
             </div>
           </div>
-          
         </div>
+    
+        <!-- Mobile Navigation Bar -->
+        <nav class="nav-bar-mobile">
+          <button class="close-menu" onclick="closeMenu()">&#10006;</button>
+    
+          <form class="search-box-mobile" onsubmit="handleSearch(event)">
+            <input type="text" id="searchInput" placeholder="Search Recipes..." />
+          </form>
+
+          <a href="#">My Recipes</a>
+          <a href="#">New Cookbook!</a>
+          <a href="#">Recipes</a>
+          <a href="#">By Category</a>
+          <a href="#">About</a>
+    
+          <div class="social-icons-mobile">
+            <a href="#"><img src="static/media/pinterest.png" alt="Pinterest" class="icon" /></a>
+            <a href="#"><img src="static/media/instagram.png" alt="Instagram" class="icon" /></a>
+            <a href="#"><img src="static/media/twitter.png" alt="Twitter" class="icon" /></a>
+          </div>
+        </nav>
+    
       </header>
       
       
@@ -164,7 +180,7 @@
                     <div class="col-xl-4 col-lg-4 mb-50">
                         <div class="footer-widget">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="/static/media/logo-TTJ.png" class="img-fluid" alt="logo"></a>
+                                <a href="index.html"><img src="static/media/logo-TTJ.png" class="img-fluid" alt="logo"></a>
                             </div>
                             <div class="footer-social-icon">
                                 <span>Follow us</span>
@@ -184,14 +200,11 @@
                             <ul>
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">about</a></li>
-                                <li><a href="#">services</a></li>
-                                <li><a href="#">portfolio</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Our Services</a></li>
-                                <li><a href="#">Expert Team</a></li>
+                                <li><a href="#">Recipes</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Categorys</a></li>
                                 <li><a href="#">Contact us</a></li>
-                                <li><a href="#">Latest News</a></li>
+                                <li><a href="#">Latest Recipes</a></li>
                             </ul>
                         </div>
                     </div>
@@ -204,10 +217,11 @@
                                 <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
                             </div>
                             <div class="subscribe-form">
-                                <form action="#">
-                                    <input type="text" placeholder="Email Address">
-                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                <form action="https://formspree.io/f/xeogoyyg" method="POST">
+                                    <input type="email" name="email" id="emailInput" placeholder="Email Address" required>
+                                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
                                 </form>
+                                <div id="messageBox"></div>                                
                             </div>
                         </div>
                     </div>
