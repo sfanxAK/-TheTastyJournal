@@ -1,6 +1,6 @@
-import { recipes, categories } from './data.js';
-import { setupSearch } from './search.js';
-import { setupNewsletter } from './newsletter.js';
+import { recipes, categories } from 'data.js';
+import { setupSearch } from 'search.js';
+import { setupNewsletter } from 'newsletter.js';
 
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');
@@ -70,7 +70,7 @@ function displayAllCategories() {
       <div class="category-content">
         <h2>${category.name}</h2>
         <p>${category.description}</p>
-        <a href="/pages/categories.html?category=${encodeURIComponent(category.name.toLowerCase())}" class="btn btn-primary">View Recipes</a>
+        <a href="../pages/categories.html?category=${encodeURIComponent(category.name.toLowerCase())}" class="btn btn-primary">View Recipes</a>
       </div>
     `;
     
@@ -91,7 +91,7 @@ function displayCategoryRecipes(categoryName) {
   
   // Update category header
   categoryHeader.innerHTML = `
-    <a href="/pages/categories.html" class="back-link"><i class="fas fa-arrow-left"></i> All Categories</a>
+    <a href="../pages/categories.html" class="back-link"><i class="fas fa-arrow-left"></i> All Categories</a>
     <h1>${category.name}</h1>
     <p>${category.description}</p>
   `;
@@ -121,7 +121,7 @@ function displayCategoryRecipes(categoryName) {
           </div>
           <h3 class="article-title">${recipe.title}</h3>
           <p class="article-excerpt">${recipe.excerpt}</p>
-          <a href="/pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          <a href="../pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
         </div>
       `;
       
@@ -131,7 +131,7 @@ function displayCategoryRecipes(categoryName) {
     categoryRecipesContainer.innerHTML = `
       <div class="no-recipes">
         <p>No recipes found in this category.</p>
-        <a href="/pages/recipes.html" class="btn btn-secondary">View All Recipes</a>
+        <a href="../pages/recipes.html" class="btn btn-secondary">View All Recipes</a>
       </div>
     `;
   }
