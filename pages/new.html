@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Culinary Canvas | New in Cooking</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <a href="/">Culinary Canvas</a>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/pages/recipes.html">Recipes</a></li>
+            <li><a href="/pages/categories.html">Categories</a></li>
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/new.html" class="active">New in Cooking</a></li>
+          </ul>
+        </nav>
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Search recipes...">
+          <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/pages/recipes.html">Recipes</a></li>
+      <li><a href="/pages/categories.html">Categories</a></li>
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/new.html" class="active">New in Cooking</a></li>
+    </ul>
+    <div class="mobile-search">
+      <input type="text" id="mobile-search-input" placeholder="Search recipes...">
+      <button id="mobile-search-btn"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <h1>New in Cooking</h1>
+        <p>Discover the latest trends, techniques, and tools in the culinary world</p>
+      </div>
+    </section>
+
+    <section class="trends-section">
+      <div class="container">
+        <h2 class="section-title">Current Food Trends</h2>
+        <div class="trends-grid">
+          <div class="trend-card">
+            <div class="trend-img">
+              <img src="https://images.pexels.com/photos/6287525/pexels-photo-6287525.jpeg" alt="Fermentation">
+            </div>
+            <div class="trend-content">
+              <h3>Fermentation Renaissance</h3>
+              <p>Explore the ancient art of fermentation making a modern comeback, from homemade kombucha to sourdough bread and beyond.</p>
+              <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="trend-card">
+            <div class="trend-img">
+              <img src="https://images.pexels.com/photos/374052/pexels-photo-374052.jpeg" alt="Plant-based cooking">
+            </div>
+            <div class="trend-content">
+              <h3>Plant-Based Innovation</h3>
+              <p>Discover creative plant-based cooking techniques and ingredients that are revolutionizing how we think about vegetarian and vegan cuisine.</p>
+              <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="trend-card">
+            <div class="trend-img">
+              <img src="https://images.pexels.com/photos/7363790/pexels-photo-7363790.jpeg" alt="Sustainable cooking">
+            </div>
+            <div class="trend-content">
+              <h3>Zero-Waste Cooking</h3>
+              <p>Learn how to make the most of every ingredient in your kitchen, reduce food waste, and create delicious meals with sustainability in mind.</p>
+              <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-article">
+      <div class="container">
+        <div class="featured-article-content">
+          <div class="featured-article-img">
+            <img src="https://images.pexels.com/photos/1435895/pexels-photo-1435895.jpeg" alt="Modern kitchen gadgets">
+          </div>
+          <div class="featured-article-text">
+            <h2>Kitchen Tech: What's Worth the Investment?</h2>
+            <p class="article-date">September 10, 2023</p>
+            <p>The world of kitchen gadgets is vast and ever-expanding, from high-tech smart appliances to innovative manual tools. But which ones will actually improve your cooking and which will just collect dust?</p>
+            <p>In this comprehensive guide, we explore the most useful kitchen tools and appliances for home cooks of all levels, considering factors like functionality, versatility, durability, and value for money.</p>
+            <a href="#" class="btn btn-primary">Read Full Article</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="techniques-section">
+      <div class="container">
+        <h2 class="section-title">Modern Cooking Techniques</h2>
+        <div class="techniques-grid">
+          <div class="technique-card">
+            <div class="technique-icon">
+              <i class="fas fa-temperature-low"></i>
+            </div>
+            <h3>Sous Vide Cooking</h3>
+            <p>Perfect temperature control for consistently amazing results, especially with proteins.</p>
+          </div>
+          <div class="technique-card">
+            <div class="technique-icon">
+              <i class="fas fa-fire"></i>
+            </div>
+            <h3>Live-Fire Cooking</h3>
+            <p>Ancient techniques meet modern approaches for enhanced flavor profiles.</p>
+          </div>
+          <div class="technique-card">
+            <div class="technique-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Pressure Cooking</h3>
+            <p>Fast, energy-efficient cooking that preserves nutrients and develops deep flavors.</p>
+          </div>
+          <div class="technique-card">
+            <div class="technique-icon">
+              <i class="fas fa-wind"></i>
+            </div>
+            <h3>Air Frying</h3>
+            <p>Crispy results with significantly less oil than traditional frying methods.</p>
+          </div>
+          <div class="technique-card">
+            <div class="technique-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <h3>Molecular Gastronomy</h3>
+            <p>Scientific approaches to transform textures and presentations in unexpected ways.</p>
+          </div>
+          <div class="technique-card">
+            <div class="technique-icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <h3>Microgreens & Edible Flowers</h3>
+            <p>Elevate dishes with concentrated flavors and beautiful natural garnishes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="podcasts-section">
+      <div class="container">
+        <h2 class="section-title">Culinary Podcasts We Love</h2>
+        <div class="podcasts-grid">
+          <div class="podcast-card">
+            <div class="podcast-logo">
+              <i class="fas fa-microphone-alt"></i>
+            </div>
+            <div class="podcast-content">
+              <h3>The Flavor Files</h3>
+              <p>Deep dives into the science of taste and how different flavors work together.</p>
+              <a href="#" class="podcast-link"><i class="fas fa-headphones"></i> Listen Now</a>
+            </div>
+          </div>
+          <div class="podcast-card">
+            <div class="podcast-logo">
+              <i class="fas fa-microphone-alt"></i>
+            </div>
+            <div class="podcast-content">
+              <h3>Global Kitchen</h3>
+              <p>Exploring culinary traditions and techniques from around the world.</p>
+              <a href="#" class="podcast-link"><i class="fas fa-headphones"></i> Listen Now</a>
+            </div>
+          </div>
+          <div class="podcast-card">
+            <div class="podcast-logo">
+              <i class="fas fa-microphone-alt"></i>
+            </div>
+            <div class="podcast-content">
+              <h3>Home Cook Heroes</h3>
+              <p>Practical tips, tricks, and inspiration for everyday home cooking.</p>
+              <a href="#" class="podcast-link"><i class="fas fa-headphones"></i> Listen Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container">
+        <div class="newsletter-content">
+          <h2>Subscribe to Our Newsletter</h2>
+          <p>Get the latest recipes and cooking tips delivered straight to your inbox</p>
+          <form id="newsletter-form" action="https://formspree.io/f/your-formspree-id" method="POST">
+            <div class="form-group">
+              <input type="email" name="email" id="email" placeholder="Your email address" required>
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </div>
+          </form>
+          <div id="subscription-message"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>Culinary Canvas</h3>
+          <p>Exploring the art of cooking since 2023</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/pages/recipes.html">Recipes</a></li>
+            <li><a href="/pages/categories.html">Categories</a></li>
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/new.html">New in Cooking</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Culinary Canvas. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/new.js"></script>
+</body>
+</html>

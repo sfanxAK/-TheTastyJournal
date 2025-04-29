@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="media/favicon-the-Tasty-Journal.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Tasty Journal | Home</title>
+  <title>Culinary Canvas | Recipes</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,12 +15,12 @@
     <div class="container">
       <div class="header-content">
         <div class="logo">
-          <img class="nav-logo" src="media/LOGO-TTJ.png">
+          <a href="/">Culinary Canvas</a>
         </div>
         <nav>
           <ul class="nav-links">
-            <li><a href="/" class="active">Home</a></li>
-            <li><a href="/pages/recipes.html">Recipes</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/pages/recipes.html" class="active">Recipes</a></li>
             <li><a href="/pages/categories.html">Categories</a></li>
             <li><a href="/pages/about.html">About</a></li>
             <li><a href="/pages/new.html">New in Cooking</a></li>
@@ -42,8 +41,8 @@
 
   <div class="mobile-nav">
     <ul>
-      <li><a href="/" class="active">Home</a></li>
-      <li><a href="/pages/recipes.html">Recipes</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/pages/recipes.html" class="active">Recipes</a></li>
       <li><a href="/pages/categories.html">Categories</a></li>
       <li><a href="/pages/about.html">About</a></li>
       <li><a href="/pages/new.html">New in Cooking</a></li>
@@ -55,42 +54,49 @@
   </div>
 
   <main>
-    <section class="hero">
+    <!-- Page Banner -->
+    <section class="page-banner">
       <div class="container">
-        <div class="hero-content">
-          <h1>Welcome to The Tasty Journal</h1>
-          <p>Where passion for cooking meets artistic expression</p>
-          <a href="/pages/recipes.html" class="btn btn-primary">Explore Recipes</a>
+        <h1>All Recipes</h1>
+        <p>Explore our collection of delicious recipes</p>
+      </div>
+    </section>
+
+    <!-- Recipe Categories -->
+    <section class="recipe-categories">
+      <div class="container">
+        <h2 class="section-title">Browse by Category</h2>
+        <div class="categories-container" id="categories-container">
+          <!-- Categories will be loaded dynamically -->
         </div>
       </div>
     </section>
 
-    <section class="latest-articles">
+    <!-- Search Results (only displayed when searching) -->
+    <section class="search-results-section" id="search-results-section">
       <div class="container">
-        <h2 class="section-title">Latest Articles</h2>
-        <div class="article-grid" id="latest-articles-container">
-          <!-- Articles will be loaded dynamically -->
+        <h2 class="section-title" id="search-results-title">Search Results</h2>
+        <div class="article-grid" id="search-results">
+          <!-- Search results will be loaded dynamically -->
         </div>
       </div>
     </section>
 
-    <section class="featured-category">
+    <!-- Single Recipe View (only displayed when viewing a single recipe) -->
+    <section class="single-recipe-section" id="single-recipe-section">
       <div class="container">
-        <div class="featured-content">
-          <div class="featured-text">
-            <h2>Seasonal Favorites</h2>
-            <p>Discover recipes that celebrate the best ingredients of the season</p>
-            <a href="/pages/categories.html?category=seasonal" class="btn btn-secondary">View Collection</a>
-          </div>
+        <div id="single-recipe-container">
+          <!-- Single recipe will be loaded dynamically -->
         </div>
       </div>
     </section>
 
-    <section class="most-viewed">
+    <!-- All Recipes (default view) -->
+    <section class="all-recipes-section" id="all-recipes-section">
       <div class="container">
-        <h2 class="section-title">Most Viewed Recipes</h2>
-        <div class="article-grid" id="most-viewed-container">
-          <!-- Articles will be loaded dynamically -->
+        <h2 class="section-title">All Recipes</h2>
+        <div class="article-grid" id="all-recipes-container">
+          <!-- All recipes will be loaded dynamically -->
         </div>
       </div>
     </section>
@@ -116,7 +122,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <img src="media/LOGO-TTJ-white.png">
+          <h3>Culinary Canvas</h3>
           <p>Exploring the art of cooking since 2023</p>
         </div>
         <div class="footer-links">
@@ -140,11 +146,11 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 The Tasty Journal. All rights reserved.</p>
+        <p>&copy; 2023 Culinary Canvas. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/recipes.js"></script>
 </body>
 </html>
