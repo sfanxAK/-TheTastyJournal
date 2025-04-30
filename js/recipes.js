@@ -1,6 +1,6 @@
-import { recipes, categories } from 'data.js';
-import { setupSearch } from 'search.js';
-import { setupNewsletter } from 'newsletter.js';
+import { recipes, categories } from './data.js';
+import { setupSearch } from './search.js';
+import { setupNewsletter } from './newsletter.js';
 
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');
@@ -69,7 +69,7 @@ function displayCategories() {
         <img src="${category.image}" alt="${category.name}">
       </div>
       <h3>${category.name}</h3>
-      <a href="../pages/categories.html?category=${encodeURIComponent(category.name.toLowerCase())}" class="category-link">View Recipes</a>
+      <a href="/pages/categories.html?category=${encodeURIComponent(category.name.toLowerCase())}" class="category-link">View Recipes</a>
     `;
     
     categoriesContainer.appendChild(categoryElement);
@@ -97,7 +97,7 @@ function displayAllRecipes() {
         </div>
         <h3 class="article-title">${recipe.title}</h3>
         <p class="article-excerpt">${recipe.excerpt}</p>
-        <a href="../pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        <a href="/pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
       </div>
     `;
     
@@ -122,7 +122,7 @@ function displaySingleRecipe(recipeId) {
   // Create single recipe HTML
   singleRecipeContainer.innerHTML = `
     <div class="recipe-header">
-      <a href="../pages/recipes.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to All Recipes</a>
+      <a href="/pages/recipes.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to All Recipes</a>
       <h1>${recipe.title}</h1>
       <div class="recipe-meta">
         <span class="recipe-category"><i class="fas fa-utensils"></i> ${recipe.category}</span>
@@ -137,7 +137,7 @@ function displaySingleRecipe(recipeId) {
       ${recipe.content}
     </div>
     <div class="recipe-tags">
-      ${recipe.tags ? recipe.tags.map(tag => `<a href="../pages/recipes.html?search=${tag}" class="recipe-tag">#${tag}</a>`).join('') : ''}
+      ${recipe.tags ? recipe.tags.map(tag => `<a href="/pages/recipes.html?search=${tag}" class="recipe-tag">#${tag}</a>`).join('') : ''}
     </div>
     <div class="recipe-share">
       <h3>Share this Recipe</h3>
@@ -174,7 +174,7 @@ function displaySingleRecipe(recipeId) {
         </div>
         <div class="article-content">
           <h3 class="article-title">${relatedRecipe.title}</h3>
-          <a href="../pages/recipes.html?id=${relatedRecipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          <a href="/pages/recipes.html?id=${relatedRecipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
         </div>
       `;
       

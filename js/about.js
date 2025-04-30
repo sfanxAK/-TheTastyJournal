@@ -1,5 +1,5 @@
-import { setupSearch } from 'search.js';
-import { setupNewsletter } from 'newsletter.js';
+import { setupSearch } from './search.js';
+import { setupNewsletter } from './newsletter.js';
 
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');
