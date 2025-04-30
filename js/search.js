@@ -1,4 +1,4 @@
-import { recipes } from '/data.js';
+import { recipes } from './data.js';
 
 export function setupSearch() {
   // Get search input elements
