@@ -1,6 +1,6 @@
-import { recipes } from './data.js';
-import { setupSearch } from './search.js';
-import { setupNewsletter } from './newsletter.js';
+import { recipes } from 'data.js';
+import { setupSearch } from 'search.js';
+import { setupNewsletter } from 'newsletter.js';
 
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');
@@ -71,7 +71,7 @@ function renderRecipes(container, recipesList) {
         </div>
         <h3 class="article-title">${recipe.title}</h3>
         <p class="article-excerpt">${recipe.excerpt}</p>
-        <a href="/pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        <a href="https://sfanxak.github.io/-TheTastyJournal/pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
       </div>
     `;
     
