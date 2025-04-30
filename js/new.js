@@ -1,5 +1,5 @@
-import { setupSearch } from 'search.js';
-import { setupNewsletter } from 'newsletter.js';
+import { setupSearch } from '/-TheTastyJournal/search.js';
+import { setupNewsletter } from '/-TheTastyJournal/newsletter.js';
 
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');

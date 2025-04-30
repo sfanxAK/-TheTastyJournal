@@ -1,4 +1,4 @@
-import { recipes } from 'data.js';
+import { recipes } from '/-TheTastyJournal/data.js';
 
 export function setupSearch() {
   // Get search input elements
@@ -10,7 +10,7 @@ export function setupSearch() {
   // Function to perform search
   function performSearch(searchTerm) {
     // Redirect to recipes page with search query
-    window.location.href = `https://sfanxak.github.io/-TheTastyJournal/pages/recipes.html?search=${encodeURIComponent(searchTerm)}`;
+    window.location.href = `/pages/recipes.html?search=${encodeURIComponent(searchTerm)}`;
   }
   
   // Add event listeners for search button clicks
@@ -50,7 +50,7 @@ export function setupSearch() {
   // Check if we're on the recipes page and handle search results
   function handleSearchResults() {
     // Only run on the recipes page
-    if (!window.location.pathname.includes('https://sfanxak.github.io/-TheTastyJournal/pages/recipes.html')) return;
+    if (!window.location.pathname.includes('/pages/recipes.html')) return;
     
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('search');
@@ -71,7 +71,7 @@ export function setupSearch() {
         searchResultsContainer.innerHTML = `
           <div class="no-results">
             <p>No recipes found matching "${searchQuery}"</p>
-            <a href="https://sfanxak.github.io/-TheTastyJournal/pages/recipes.html" class="btn btn-secondary">View All Recipes</a>
+            <a href="/pages/recipes.html" class="btn btn-secondary">View All Recipes</a>
           </div>
         `;
       }
@@ -112,7 +112,7 @@ export function setupSearch() {
           </div>
           <h3 class="article-title">${recipe.title}</h3>
           <p class="article-excerpt">${recipe.excerpt}</p>
-          <a href="https://sfanxak.github.io/-TheTastyJournal/pages/recipes.html=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          <a href="/pages/recipes.html=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
         </div>
       `;
       
