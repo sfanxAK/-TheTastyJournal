@@ -1,6 +1,6 @@
-import { recipes } from './js/data.js';
-import { setupSearch } from './js/search.js';
-import { setupNewsletter } from './js/newsletter.js';
+import { recipes } from '/data.js';
+import { setupSearch } from '/search.js';
+import { setupNewsletter } from '/newsletter.js';
 
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');
