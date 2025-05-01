@@ -5,7 +5,7 @@ export const recipes = [
     title: "Creamy Garlic Parmesan Risotto",
     category: "Italian",
     date: "August 15, 2023",
-    image: "https://images.pexels.com/photos/6097715/pexels-photo-6097715.jpeg",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ_img4.webp",
     views: 1250,
     excerpt: "A luxurious, creamy risotto packed with garlic and parmesan flavors that's perfect for a cozy dinner.",
     content: `
@@ -45,7 +45,7 @@ export const recipes = [
     title: "Spicy Thai Basil Chicken",
     category: "Asian",
     date: "August 20, 2023",
-    image: "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img5.webp",
     views: 980,
     excerpt: "A quick and flavorful Thai stir-fry with chicken, basil, and a perfect balance of sweet, salty, and spicy.",
     content: `
@@ -85,7 +85,7 @@ export const recipes = [
     title: "Classic French Apple Tart",
     category: "Desserts",
     date: "August 25, 2023",
-    image: "https://images.pexels.com/photos/2267873/pexels-photo-2267873.jpeg",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img6.webp",
     views: 1560,
     excerpt: "An elegant French dessert featuring buttery pastry and spiral-arranged caramelized apples.",
     content: `
