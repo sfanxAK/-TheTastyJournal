@@ -162,6 +162,8 @@ header {
 
 .logo img {
     max-width: 110px;
+    width: auto;
+    height: auto;
 }
 
 .nav-links {
