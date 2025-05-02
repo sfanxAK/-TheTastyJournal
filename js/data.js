@@ -140,7 +140,7 @@ export const recipes = [
     title: "Mediterranean Quinoa Salad",
     category: "Healthy",
     date: "September 1, 2023",
-    image: "https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img7.webp",
     views: 820,
     excerpt: "A refreshing, protein-packed salad full of Mediterranean flavors and colorful vegetables.",
     content: `
@@ -186,7 +186,7 @@ export const recipes = [
     title: "Homemade Sourdough Bread",
     category: "Baking",
     date: "September 5, 2023",
-    image: "https://images.pexels.com/photos/1775045/pexels-photo-1775045.jpeg",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img8.webp",
     views: 2100,
     excerpt: "Learn to make incredible sourdough bread with a crispy crust and tender, flavorful interior.",
     content: `
@@ -241,7 +241,7 @@ export const recipes = [
     title: "Vegetarian Chickpea Curry",
     category: "Vegetarian",
     date: "September 10, 2023",
-    image: "https://images.pexels.com/photos/11136408/pexels-photo-11136408.jpeg",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img9.webp",
     views: 930,
     excerpt: "A hearty and flavorful vegetarian curry that's packed with protein and warming spices.",
     content: `
@@ -290,48 +290,48 @@ export const categories = [
     id: 1,
     name: "Breakfast",
     description: "Start your day right with these delicious breakfast recipes.",
-    image: "https://images.pexels.com/photos/103124/pexels-photo-103124.jpeg"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img10.webp"
   },
   {
     id: 2,
     name: "Italian",
     description: "Classic Italian dishes from pasta to pizza and everything in between.",
-    image: "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img11.webp"
   },
   {
     id: 3,
     name: "Asian",
     description: "Explore the vibrant flavors of Asian cuisine from various regions.",
-    image: "https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img12.webp"
   },
   {
     id: 4,
     name: "Desserts",
     description: "Indulge your sweet tooth with these irresistible dessert recipes.",
-    image: "https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img13.webp"
   },
   {
     id: 5,
     name: "Healthy",
     description: "Nutritious and delicious recipes for a balanced lifestyle.",
-    image: "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img14.webp"
   },
   {
     id: 6,
     name: "Vegetarian",
     description: "Flavorful vegetarian dishes that everyone will love.",
-    image: "https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img15.webp"
   },
   {
     id: 7,
     name: "Baking",
     description: "From bread to pastries, perfect your baking skills with these recipes.",
-    image: "https://images.pexels.com/photos/1070880/pexels-photo-1070880.jpeg"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img16.webp"
   },
   {
     id: 8,
     name: "Seasonal",
     description: "Recipes featuring the best seasonal ingredients.",
-    image: "https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img17.webp"
   }
 ];

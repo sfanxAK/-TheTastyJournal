@@ -214,7 +214,7 @@ function addRecipeStyles() {
   style.textContent = `
     /* Page Banner */
     .page-banner {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg');
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img21.webp');
       background-size: cover;
       background-position: center;
       color: white;
