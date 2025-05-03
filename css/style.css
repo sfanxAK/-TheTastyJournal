@@ -160,11 +160,6 @@ header {
   padding: var(--space-sm) 0;
 }
 
-.logo img {
-    width: auto;
-    height: auto;
-}
-
 .nav-links {
   display: flex;
   margin-left: auto;
