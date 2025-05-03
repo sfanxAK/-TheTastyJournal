@@ -632,6 +632,10 @@ footer {
     grid-template-columns: 1fr;
     gap: var(--space-md);
   }
+  .logo img {
+    max-width: 110px;
+    height: auto;
+  }
 }
 
 @media (max-width: 576px) {
@@ -654,6 +658,7 @@ footer {
   .hero h1 {
     font-size: 2rem;
   }
+  
 }
 
 /* Utility Classes */
@@ -679,4 +684,10 @@ footer {
 
 .mb-5 {
   margin-bottom: var(--space-xl);
+}
+
+@media (max-width: 320px) {
+  .hero {
+    height: fit-content;
+  }
 }
