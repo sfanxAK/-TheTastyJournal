@@ -161,9 +161,9 @@ header {
 }
 
 .logo img {
-  max-width: 130px;
-  height: auto;
-  }
+    width: 130px;
+    height: auto;
+}
 
 .nav-links {
   display: flex;
@@ -686,8 +686,3 @@ footer {
   margin-bottom: var(--space-xl);
 }
 
-@media (max-width: 320px) {
-  .hero {
-    height: fit-content;
-  }
-}
