@@ -302,6 +302,10 @@ header {
   color: white;
   text-align: center;
   margin-top: 60px;
+  content-visibility: auto;
+  contain-intrinsic-size: 80vh;
+
+  
 }
 
 .hero-content {

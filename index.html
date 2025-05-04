@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <base href="/-TheTastyJournal/">
-  <meta charset="UTF-8">
-  <link rel="icon" href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/favicon-the-Tasty-Journal.webp">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Tasty Journal | Home</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <link
-  rel="preload"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  as="style"
-  onload="this.onload=null;this.rel='stylesheet';"
-  />
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  </noscript>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
+  <head>
+    <base href="/-TheTastyJournal/">
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/favicon-the-Tasty-Journal.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Tasty Journal | Home</title>
+  
+    <!-- Critical CSS can be inlined here if possible -->
+  
+    <!-- Main stylesheet -->
+    <link rel="preload" href="./css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet';" />
+    <noscript><link rel="stylesheet" href="./css/style.css" /></noscript>
+  
+    <!-- Font Awesome deferred -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet';"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    </noscript>
+  
+    <!-- Google Fonts performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  
+    <!-- Preload Largest Contentful Paint image -->
+    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img14.webp" />
+  </head>
+  
 <body>
   <header>
     <div class="container">
@@ -29,8 +45,7 @@
                 src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/LOGO-TTJ.webp"
                 alt="navbar logo"
                 loading="lazy"
-                width="90px"
-                height="40px">
+                >
         </div>
         <nav>
           <ul class="nav-links">
@@ -69,6 +84,21 @@
   </div>
 
   <main>
+    <body>
+      <img
+        src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img14.webp"
+        alt=""
+        width="0"
+        height="0"
+        style="position:absolute; width:0; height:0; overflow:hidden;"
+        loading="eager"
+        fetchpriority="high"
+      />
+    
+      <section class="hero">
+        <!-- Your content -->
+      </section>
+    </body>    
     <section class="hero">
       <div class="container">
         <div class="hero-content">
@@ -133,8 +163,7 @@
           <img src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/LOGO-TTJ-white.webp"
                 alt="footer logo"
                 loading="lazy"
-                width="320px"
-                height="auto">
+                width="320">
           <p>Exploring the art of cooking since 2023</p>
         </div>
         <div class="footer-links">
