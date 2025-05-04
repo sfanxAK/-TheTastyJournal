@@ -699,10 +699,6 @@ footer {
 }
 
 @media (max-width: 320px) {
-  .hero{
-    width: auto;
-    height: auto;
-  }
   .footer-logo img {
     width: fit-content;
     height: auto;
