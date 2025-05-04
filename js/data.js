@@ -5,7 +5,7 @@ export const recipes = [
     title: "Creamy Garlic Parmesan Risotto",
     category: "Italian",
     date: "August 15, 2023",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ_img4.webp",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ_img4.webp",
     views: 1250,
     excerpt: "A luxurious, creamy risotto packed with garlic and parmesan flavors that's perfect for a cozy dinner.",
     content: `
@@ -45,7 +45,7 @@ export const recipes = [
     title: "Spicy Thai Basil Chicken",
     category: "Asian",
     date: "August 20, 2023",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img5.webp",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img5.webp",
     views: 980,
     excerpt: "A quick and flavorful Thai stir-fry with chicken, basil, and a perfect balance of sweet, salty, and spicy.",
     content: `
@@ -85,7 +85,7 @@ export const recipes = [
     title: "Classic French Apple Tart",
     category: "Desserts",
     date: "August 25, 2023",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img6.webp",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img6.webp",
     views: 1560,
     excerpt: "An elegant French dessert featuring buttery pastry and spiral-arranged caramelized apples.",
     content: `
@@ -140,7 +140,7 @@ export const recipes = [
     title: "Mediterranean Quinoa Salad",
     category: "Healthy",
     date: "September 1, 2023",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img7.webp",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img7.webp",
     views: 820,
     excerpt: "A refreshing, protein-packed salad full of Mediterranean flavors and colorful vegetables.",
     content: `
@@ -186,7 +186,7 @@ export const recipes = [
     title: "Homemade Sourdough Bread",
     category: "Baking",
     date: "September 5, 2023",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img8.webp",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img8.webp",
     views: 2100,
     excerpt: "Learn to make incredible sourdough bread with a crispy crust and tender, flavorful interior.",
     content: `
@@ -241,7 +241,7 @@ export const recipes = [
     title: "Vegetarian Chickpea Curry",
     category: "Vegetarian",
     date: "September 10, 2023",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img9.webp",
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img9.webp",
     views: 930,
     excerpt: "A hearty and flavorful vegetarian curry that's packed with protein and warming spices.",
     content: `
@@ -290,48 +290,48 @@ export const categories = [
     id: 1,
     name: "Breakfast",
     description: "Start your day right with these delicious breakfast recipes.",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img10.webp"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img10.webp"
   },
   {
     id: 2,
     name: "Italian",
     description: "Classic Italian dishes from pasta to pizza and everything in between.",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img11.webp"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img11.webp"
   },
   {
     id: 3,
     name: "Asian",
     description: "Explore the vibrant flavors of Asian cuisine from various regions.",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img12.webp"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img12.webp"
   },
   {
     id: 4,
     name: "Desserts",
     description: "Indulge your sweet tooth with these irresistible dessert recipes.",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img13.webp"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img13.webp"
   },
   {
     id: 5,
     name: "Healthy",
     description: "Nutritious and delicious recipes for a balanced lifestyle.",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img14.webp"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img14.webp"
   },
   {
     id: 6,
     name: "Vegetarian",
     description: "Flavorful vegetarian dishes that everyone will love.",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img15.webp"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img15.webp"
   },
   {
     id: 7,
     name: "Baking",
     description: "From bread to pastries, perfect your baking skills with these recipes.",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img16.webp"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img16.webp"
   },
   {
     id: 8,
     name: "Seasonal",
     description: "Recipes featuring the best seasonal ingredients.",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img17.webp"
+    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img17.webp"
   }
 ];
