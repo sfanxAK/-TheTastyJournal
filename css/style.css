@@ -291,21 +291,26 @@ header {
   margin-bottom: 13px;
 }
 
-/* Hero Section */
 .hero {
+  position: relative;
   height: 80vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img14.webp');
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  color: white;
+  justify-content: center;
   text-align: center;
   margin-top: 60px;
-  content-visibility: auto;
-  contain-intrinsic-size: 80vh;
+}
 
-  
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(50%); /* same as dark overlay */
 }
 
 .hero-content {
@@ -313,6 +318,9 @@ header {
   max-width: 700px;
   margin: 0 auto;
   padding: var(--space-lg);
+  color: white;
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
