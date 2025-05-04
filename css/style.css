@@ -690,3 +690,10 @@ footer {
   margin-bottom: var(--space-xl);
 }
 
+@media (max-width: 300px) {
+  .hero {
+    background: none;
+    height: auto;
+    width: auto;
+  }
+}
