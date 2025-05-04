@@ -698,10 +698,9 @@ footer {
   margin-bottom: var(--space-xl);
 }
 
-@media (max-width: 300px) {
-  .hero {
-    background: none;
-    height: auto;
+@media (max-width: 320px) {
+  .hero img{
+    height: fit-content;
     width: auto;
   }
   .footer-logo img {
