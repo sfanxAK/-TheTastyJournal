@@ -1,199 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <base href="/-TheTastyJournal/">
-    <meta charset="UTF-8" />
-    <link rel="icon" href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/favicon-the-Tasty-Journal.webp" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Tasty Journal | Home</title>
-  
-    <!-- Critical CSS can be inlined here if possible -->
-  
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="./css/style.css">
-    <!-- Font Awesome deferred -->
-    <link
-      rel="preload"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet';"
-    />
-    <noscript>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    </noscript>
-  
-    <!-- Google Fonts performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-  
-    <!-- Preload Largest Contentful Paint image -->
-    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img14.webp" />
-  </head>
-  
-  
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Tasty Journal</title>
+
+  <!-- Preconnect and Preload Fonts (render-blocking fix) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap"
+    onload="this.onload=null;this.rel='stylesheet';">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" />
+  </noscript>
+
+  <!-- Optimized Font Awesome (only brands and core, not full set) -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-KfyBxAcfwV1pVxZRPdrdwlEDd81F9EVWvHw9S5fQx9kXjJ7z0qlcA+qzXjFeArfZ0BjMYxxhd8zZojy9VcMu1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" integrity="sha512-1k1eThzIUwI47Yay2bq6gAAXPhCBrSw6GkEzLuSpvMkfb/AFfYZrqH3WyB77SmAcLDVYZKOroDrENtx8+JhrxQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Use versioned CDN for caching CSS -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@latest/css/style.css" />
+</head>
+
 <body>
-  <header>
-    <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <img class="nav-logo" 
-                src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/LOGO-TTJ.webp"
-                alt="navbar logo"
-                loading="lazy"
-                width="130"
-                height="70">
-        </div>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="https://sfanxak.github.io/-TheTastyJournal/index.html" class="active">Home</a></li>
-            <li><a href="pages/recipes.html">Recipes</a></li>
-            <li><a href="pages/categories.html">Categories</a></li>
-            <li><a href="pages/new.html">New in Cooking</a></li>
-            <li><a href="pages/about.html">About</a></li>
-          </ul>
-        </nav>
-        <div class="search-container">
-          <input type="text" id="search-input" placeholder="Search recipes...">
-          <button id="search-btn"><i class="fas fa-search"></i></button>
-        </div>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </div>
+  <header class="site-header">
+    <img class="nav-logo" src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/LOGO-TTJ.webp" alt="navbar logo"
+      loading="lazy" width="160">
   </header>
 
-  <div class="mobile-nav">
-    <ul>
-      <li><a href="/" class="active">Home</a></li>
-      <li><a href="pages/recipes.html">Recipes</a></li>
-      <li><a href="pages/categories.html">Categories</a></li>
-      <li><a href="pages/new.html">New in Cooking</a></li>
-      <li><a href="pages/about.html">About</a></li>
-    </ul>
-    <div class="mobile-search">
-      <input type="text" id="mobile-search-input" placeholder="Search recipes...">
-      <button id="mobile-search-btn"><i class="fas fa-search"></i></button>
-    </div>
-  </div>
-
   <main>
-    <img
-    src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img14.webp"
-    alt=""
-    width="0"
-    height="0"
-    style="position:absolute; width:0; height:0; overflow:hidden;"
-    loading="eager"
-    fetchpriority="high"
-  />  
     <section class="hero">
-      <img
-        class="hero-bg"
-        src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img14.webp"
-        alt="The Tasty Journal background"
-        fetchpriority="high"
-        decoding="async"
-      />
       <div class="hero-content">
         <h1>Welcome to The Tasty Journal</h1>
-        <p>Where passion for cooking meets artistic expression…</p>
-        <a href="pages/recipes.html" class="btn btn-primary">Explore Recipes</a>
-      </div>
-    </section>
-  
-
-
-    <section class="latest-articles">
-      <div class="container">
-        <h2 class="section-title">Latest Articles</h2>
-        <div class="article-grid" id="latest-articles-container">
-          <!-- Articles will be loaded dynamically -->
-        </div>
+        <p>Where passion for cooking meets artistic expression</p>
       </div>
     </section>
 
-    <section class="featured-category">
-      <div class="container">
-        <div class="featured-content">
-          <div class="featured-text">
-            <h2>Seasonal Favorites</h2>
-            <p>Discover recipes that celebrate the best ingredients of the season</p>
-            <a href="pages/categories.html?category=seasonal" class="btn btn-secondary">View Collection</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="most-viewed">
-      <div class="container">
-        <h2 class="section-title">Most Viewed Recipes</h2>
-        <div class="article-grid" id="most-viewed-container">
-          <!-- Articles will be loaded dynamically -->
-        </div>
-      </div>
-    </section>
-
-    <section class="newsletter">
-      <div class="container">
-        <div class="newsletter-content">
-          <h2>Subscribe to Our Newsletter</h2>
-          <p>Get the latest recipes and cooking tips delivered straight to your inbox</p>
-          <form id="newsletter-form" action="https://formspree.io/f/xeogoyyg" method="POST">
-            <div class="form-group">
-              <input type="email" name="email" id="email" placeholder="Your email address" required>
-              <button type="submit" class="btn btn-primary">Subscribe</button>
-            </div>
-          </form>
-          <div id="subscription-message"></div>
-        </div>
-      </div>
+    <!-- Example Optimized Image -->
+    <section class="recipe">
+      <h2>Vegetarian Chickpea Curry</h2>
+      <img src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img9.webp"
+        alt="Vegetarian Chickpea Curry" width="400" height="300"
+        sizes="(max-width: 600px) 100vw, 400px"
+        srcset="
+          https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img9-small.webp 400w,
+          https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img9.webp 800w
+        ">
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/LOGO-TTJ-white.webp"
-                alt="footer logo"
-                loading="lazy"
-                width="320"
-                height="219">
-          <p>Exploring the art of cooking since 2023</p>
-        </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="https://sfanxak.github.io/-TheTastyJournal/index.html">Home</a></li>
-            <li><a href="pages/recipes.html">Recipes</a></li>
-            <li><a href="pages/categories.html">Categories</a></li>
-            <li><a href="pages/new.html">New in Cooking</a></li>
-            <li><a href="pages/about.html">About</a></li>
-          </ul>
-        </div>
-        <div class="footer-social">
-          <h4>Connect With Us</h4>
-          <div class="social-icons">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 The Tasty Journal. All rights reserved.</p>
-      </div>
-    </div>
+    <img src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/LOGO-TTJ-white.webp" alt="footer logo" loading="lazy" width="320">
   </footer>
 
-  <script type="module" src="./js/main.js"></script>
+  <!-- Defer JS files -->
+  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@latest/js/main.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@latest/js/data.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@latest/js/search.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@latest/js/newsletter.js" defer></script>
 </body>
+
 </html>
