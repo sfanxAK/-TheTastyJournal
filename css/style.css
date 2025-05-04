@@ -696,4 +696,8 @@ footer {
     height: auto;
     width: auto;
   }
+  .footer-logo img {
+    width: fit-content;
+    height: auto;
+  }
 }
