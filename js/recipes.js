@@ -476,3 +476,38 @@ function initPage() {
 
 // Run initialization when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initPage);
+
+// Add CSS for animations that were referenced in the JS
+const style = document.createElement('style');
+style.textContent = `
+  .fade-in {
+    animation: fadeIn 0.8s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .hamburger span.active:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger span.active:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger span.active:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  .no-scroll {
+    overflow: hidden;
+  }
+  
+  header.scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  }
+`;
+document.head.appendChild(style);

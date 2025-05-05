@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detailed recipe instructions with step-by-step guidance">
+  <meta http-equiv="Cache-Control" content="public, max-age=31536000">
+  <title>Recipe Post | Culinary Canvas</title>
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/favicon-the-Tasty-Journal.webp">
+  <link rel="stylesheet" href="/css/recipe-post.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap">
+  </noscript>
+  <!-- Defer non-critical font awesome -->
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </noscript>
+
+  <!-- Preconnect and preload hero image -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+<body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <img class="nav-logo" 
+                  src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/LOGO-TTJ.webp"
+                  alt="navbar logo"
+                  loading="lazy"
+                  width="120"
+                  >
+          </div>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="https://sfanxak.github.io/-TheTastyJournal/index.html">Home</a></li>
+              <li><a href="https://sfanxak.github.io/-TheTastyJournal/pages/recipes.html" class="active">Recipes</a></li>
+              <li><a href="https://sfanxak.github.io/-TheTastyJournal/pages/categories.html">Categories</a></li>
+              <li><a href="https://sfanxak.github.io/-TheTastyJournal/pages/new.html">New in Cooking</a></li>
+              <li><a href="https://sfanxak.github.io/-TheTastyJournal/pages/about.html">About</a></li>
+            </ul>
+          </nav>
+          <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search recipes...">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+          </div>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+    <div class="mobile-nav">
+      <ul>
+        <li><a href="https://sfanxak.github.io/-TheTastyJournal/index.html">Home</a></li>
+        <li><a href="https://sfanxak.github.io/-TheTastyJournal/pages/recipes.html" class="active">Recipes</a></li>
+        <li><a href="https://sfanxak.github.io/-TheTastyJournal/pages/categories.html">Categories</a></li>
+        <li><a href="https://sfanxak.github.io/-TheTastyJournal/pages/new.html">New in Cooking</a></li>
+        <li><a href="https://sfanxak.github.io/-TheTastyJournal/pages/about.html">About</a></li>
+      </ul>
+      <div class="mobile-search">
+        <input type="text" id="mobile-search-input" placeholder="Search recipes...">
+        <button id="mobile-search-btn"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+   
+  
+
+  <main class="main-container">
+    <div class="path-container">
+      <nav class="breadcrumb">
+        <a href="/">Home</a> &gt;
+        <a href="/recipes">Recipes</a> &gt;
+        <span id="recipe-category"></span>
+      </nav>
+    </div>
+
+    
+    <article class="recipe-post">
+      <!-- Top Ad Banner -->
+      <div class="ad-banner ad-banner-top">
+        <div class="ad-placeholder">Advertisement</div>
+      </div>
+
+      <div class="recipe-header">
+        <h1 id="recipe-title"></h1>
+        <div class="recipe-meta">
+          <span id="recipe-date"></span>
+          <span class="meta-separator">•</span>
+          <span id="recipe-author">By Chef Sarah</span>
+        </div>
+      </div>
+
+      <div class="recipe-featured-image">
+        <picture id="recipe-image">
+          <!-- Image will be set via JavaScript -->
+        </picture>
+      </div>
+
+      <div class="recipe-content-wrapper">
+        <div class="recipe-main-content">
+          <div class="recipe-intro" id="recipe-intro"></div>
+
+          <div class="recipe-quick-info">
+            <div class="info-item">
+              <span class="info-label">Prep Time</span>
+              <span class="info-value" id="prep-time"></span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Cook Time</span>
+              <span class="info-value" id="cook-time"></span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Total Time</span>
+              <span class="info-value" id="total-time"></span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Servings</span>
+              <span class="info-value" id="servings"></span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Difficulty</span>
+              <span class="info-value" id="difficulty"></span>
+            </div>
+          </div>
+
+          <div class="ingredients-section">
+            <h2>Ingredients</h2>
+            <ul id="ingredients-list" class="ingredients-list"></ul>
+          </div>
+
+          <!-- Middle Ad Banner -->
+          <div class="ad-banner ad-banner-middle">
+            <div class="ad-placeholder">Advertisement</div>
+          </div>
+
+          <div class="instructions-section">
+            <h2>Instructions</h2>
+            <ol id="instructions-list" class="instructions-list"></ol>
+          </div>
+
+          <div class="notes-section">
+            <h2>Recipe Notes</h2>
+            <div id="recipe-notes" class="notes-content"></div>
+          </div>
+
+          <!-- Bottom Ad Banner -->
+          <div class="ad-banner ad-banner-bottom">
+            <div class="ad-placeholder">Advertisement</div>
+          </div>
+        </div>
+
+        <!-- Sidebar for desktop -->
+        <aside class="recipe-sidebar">
+          <div class="sidebar-ad">
+            <div class="ad-placeholder">Vertical Ad</div>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <section class="related-recipes">
+      <h2>Related Recipes</h2>
+      <div id="related-recipes-grid" class="related-recipes-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/LOGO-TTJ-white.webp"
+                alt="footer logo"
+                loading="lazy"
+                width="320"
+                height="219">
+          <p>Exploring the art of cooking since 2023</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="https://sfanxak.github.io/-TheTastyJournal/index.html">Home</a></li>
+            <li><a href="pages/recipes.html">Recipes</a></li>
+            <li><a href="pages/categories.html">Categories</a></li>
+            <li><a href="pages/new.html">New in Cooking</a></li>
+            <li><a href="pages/about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 The Tasty Journal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/recipe-post.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/js/data.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/js/search.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/js/newsletter.js" defer></script>
+</body>
+</html>   
