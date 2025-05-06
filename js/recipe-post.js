@@ -91,29 +91,25 @@ if (notes && notes[1]) {
 }
 
 // Load related recipes
-const relatedRecipesGrid = document.getElementById('related-recipes-grid');
-const relatedRecipes = recipes
-  .filter(r => r.category === recipe.category && r.id !== recipe.id)
-  .slice(0, 3);
-
 relatedRecipes.forEach(relatedRecipe => {
   const recipeCard = document.createElement('article');
-  recipeCard.className = 'recipe-card';
-  
+  recipeCard.className = 'related-recipe-card';
+
   recipeCard.innerHTML = `
     <img src="${relatedRecipe.image}" alt="${relatedRecipe.title}" loading="lazy">
-    <div class="recipe-card-content">
-      <h3>${relatedRecipe.title}</h3>
-      <p>${relatedRecipe.excerpt.slice(0, 100)}...</p>
+    <div class="related-recipe-content">
+      <h4>${relatedRecipe.title}</h4>
+      <span class="related-recipe-date">${relatedRecipe.date}</span>
     </div>
   `;
-  
+
   recipeCard.addEventListener('click', () => {
     window.location.href = `/pages/recipe-post.html?id=${relatedRecipe.id}`;
   });
-  
+
   relatedRecipesGrid.appendChild(recipeCard);
 });
+
 
 // Lazy load images
 document.addEventListener('DOMContentLoaded', () => {
