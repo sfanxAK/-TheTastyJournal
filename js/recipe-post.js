@@ -168,3 +168,21 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// Load new posts (you can change filter logic as needed)
+const newRecipesList = document.getElementById('new-recipes-list');
+const newPosts = recipes
+  .filter(r => r.id !== recipe.id) // exclude current post
+  .slice(0, 5); // show 5 new posts
+
+newPosts.forEach(post => {
+  const postItem = document.createElement('div');
+  postItem.className = 'new-post-item';
+  postItem.innerHTML = `
+    <a href="/pages/recipe-post.html?title=${encodeURIComponent(post.title)}">
+      <img src="${post.image}" alt="${post.title}" loading="lazy" style="width:100%; border-radius:4px;">
+      <p style="margin-top:0.5rem;">${post.title}</p>
+    </a>
+  `;
+  newRecipesList.appendChild(postItem);
+});

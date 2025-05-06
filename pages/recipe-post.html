@@ -7,7 +7,7 @@
   <meta http-equiv="Cache-Control" content="public, max-age=31536000">
   <title>Recipe Post | Culinary Canvas</title>
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/favicon-the-Tasty-Journal.webp">
-  <link rel="stylesheet" href="https://sfanxak.github.io/-TheTastyJournal/css/recipe-post.css">
+  <link rel="stylesheet" href="../css/recipe-post.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,105 +79,111 @@
     </div>
    
   
-
-  <main class="main-container">
-    <div class="path-container">
-      <nav class="breadcrumb">
-        <a href="/">Home</a> &gt;
-        <a href="/recipes">Recipes</a> &gt;
-        <span id="recipe-category"></span>
-      </nav>
-    </div>
-
-
-    <article class="recipe-post">
-      <!-- Top Ad Banner -->
-      <div class="ad-banner ad-banner-top">
-        <div class="ad-placeholder">Advertisement</div>
+  <div class="content-wrapper">
+    <main class="main-container">
+      <div class="path-container">
+        <nav class="breadcrumb">
+          <a href="/">Home</a> &gt;
+          <a href="/recipes">Recipes</a> &gt;
+          <span id="recipe-category"></span>
+        </nav>
       </div>
 
-      <div class="recipe-header">
-        <h1 id="recipe-title"></h1>
-        <div class="recipe-meta">
-          <span id="recipe-date"></span>
-          <span class="meta-separator">•</span>
-          <span id="recipe-author">By Chef Sarah</span>
+      <article class="recipe-post">
+        <!-- Top Ad Banner -->
+        <div class="ad-banner ad-banner-top">
+          <div class="ad-placeholder">Advertisement</div>
         </div>
-      </div>
 
-      <div class="recipe-featured-image">
-        <picture id="recipe-image">
-          <!-- Image will be set via JavaScript -->
-        </picture>
-      </div>
-
-      <div class="recipe-content-wrapper">
-        <div class="recipe-main-content">
-          <div class="recipe-intro" id="recipe-intro"></div>
-
-          <div class="recipe-quick-info">
-            <div class="info-item">
-              <span class="info-label">Prep Time</span>
-              <span class="info-value" id="prep-time"></span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Cook Time</span>
-              <span class="info-value" id="cook-time"></span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Total Time</span>
-              <span class="info-value" id="total-time"></span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Servings</span>
-              <span class="info-value" id="servings"></span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Difficulty</span>
-              <span class="info-value" id="difficulty"></span>
-            </div>
-          </div>
-
-          <div class="ingredients-section">
-            <h2>Ingredients</h2>
-            <ul id="ingredients-list" class="ingredients-list"></ul>
-          </div>
-
-          <!-- Middle Ad Banner -->
-          <div class="ad-banner ad-banner-middle">
-            <div class="ad-placeholder">Advertisement</div>
-          </div>
-
-          <div class="instructions-section">
-            <h2>Instructions</h2>
-            <ol id="instructions-list" class="instructions-list"></ol>
-          </div>
-
-          <div class="notes-section">
-            <h2>Recipe Notes</h2>
-            <div id="recipe-notes" class="notes-content"></div>
-          </div>
-
-          <!-- Bottom Ad Banner -->
-          <div class="ad-banner ad-banner-bottom">
-            <div class="ad-placeholder">Advertisement</div>
+        <div class="recipe-header">
+          <h1 id="recipe-title"></h1>
+          <div class="recipe-meta">
+            <span id="recipe-date"></span>
+            <span class="meta-separator">•</span>
+            <span id="recipe-author">By Chef Sarah</span>
           </div>
         </div>
 
-        <!-- Sidebar for desktop -->
-        <aside class="recipe-sidebar">
-          <div class="sidebar-ad">
-            <div class="ad-placeholder">Vertical Ad</div>
-          </div>
-        </aside>
-      </div>
-    </article>
+        <div class="recipe-featured-image">
+          <picture id="recipe-image">
+            <!-- Image will be set via JavaScript -->
+          </picture>
+        </div>
 
-    <section class="related-recipes">
-      <h2>Related Recipes</h2>
-      <div id="related-recipes-grid" class="related-recipes-grid"></div>
-    </section>
-  </main>
+        <div class="recipe-content-wrapper">
+          <div class="recipe-main-content">
+            <div class="recipe-intro" id="recipe-intro"></div>
+
+            <div class="recipe-quick-info">
+              <div class="info-item">
+                <span class="info-label">Prep Time</span>
+                <span class="info-value" id="prep-time"></span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Cook Time</span>
+                <span class="info-value" id="cook-time"></span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Total Time</span>
+                <span class="info-value" id="total-time"></span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Servings</span>
+                <span class="info-value" id="servings"></span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Difficulty</span>
+                <span class="info-value" id="difficulty"></span>
+              </div>
+            </div>
+
+            <div class="ingredients-section">
+              <h2>Ingredients</h2>
+              <ul id="ingredients-list" class="ingredients-list"></ul>
+            </div>
+
+            <!-- Middle Ad Banner -->
+            <div class="ad-banner ad-banner-middle">
+              <div class="ad-placeholder">Advertisement</div>
+            </div>
+
+            <div class="instructions-section">
+              <h2>Instructions</h2>
+              <ol id="instructions-list" class="instructions-list"></ol>
+            </div>
+
+            <div class="notes-section">
+              <h2>Recipe Notes</h2>
+              <div id="recipe-notes" class="notes-content"></div>
+            </div>
+
+            <!-- Bottom Ad Banner -->
+            <div class="ad-banner ad-banner-bottom">
+              <div class="ad-placeholder">Advertisement</div>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <section class="related-recipes">
+        <h2>Related Recipes</h2>
+        <div id="related-recipes-grid" class="related-recipes-grid"></div>
+      </section>
+    </main>
+    <aside class="sidebar">
+      <section class="sidebar-section">
+        <h2>New Recipes</h2>
+        <div id="new-recipes-list">
+          <!-- New recipes will be injected here dynamically -->
+        </div>
+      </section>
+
+      <div class="sidebar-ad">
+        <div class="ad-placeholder">[Vertical Banner Ad]</div>
+      </div>
+    </aside>
+  </div>
 
   <footer>
     <div class="container">
