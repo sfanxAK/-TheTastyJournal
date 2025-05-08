@@ -1,8 +1,10 @@
-// Recipe data
-export let recipes = []; // Will be loaded from CSV
+import Papa from 'https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js';
+
+export let recipes = [];
+export let categories = [];
 
 export function loadRecipesFromCSV(callback) {
-  Papa.parse('https://sfanxak.github.io/-TheTastyJournal/data/recipes.csv', {
+  Papa.parse('../data/recipes.csv', {
     download: true,
     header: true,
     skipEmptyLines: true,
@@ -15,9 +17,22 @@ export function loadRecipesFromCSV(callback) {
         date: recipe.date,
         image: recipe.image,
         category: recipe.category,
-        tags: recipe.tags.split(',').map(tag => tag.trim()),
+        tags: recipe.tags ? recipe.tags.split(',').map(tag => tag.trim()) : [],
         views: Number(recipe.views),
       }));
+
+      // Generate unique categories based on recipe data
+      const categoryMap = new Map();
+      recipes.forEach(recipe => {
+        if (!categoryMap.has(recipe.category)) {
+          categoryMap.set(recipe.category, {
+            name: recipe.category,
+            image: recipe.image, // fallback
+          });
+        }
+      });
+      categories = Array.from(categoryMap.values());
+
       callback();
     },
     error: function(err) {
