@@ -2,7 +2,7 @@
 export let recipes = []; // Will be loaded from CSV
 
 export function loadRecipesFromCSV(callback) {
-  Papa.parse('/data/recipes.csv', {
+  Papa.parse('https://sfanxak.github.io/-TheTastyJournal/data/recipes.csv', {
     download: true,
     header: true,
     skipEmptyLines: true,

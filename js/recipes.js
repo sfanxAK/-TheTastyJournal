@@ -1,4 +1,4 @@
-import { recipes, loadRecipesFromCSV } from './data.js';
+import { recipes, loadRecipesFromCSV } from 'https://sfanxak.github.io/-TheTastyJournal/data.js';
 document.addEventListener('DOMContentLoaded', () => {
   loadRecipesFromCSV(() => {
     // 🔁 Run your functions to show recipes after data is loaded

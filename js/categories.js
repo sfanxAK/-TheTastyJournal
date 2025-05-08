@@ -1,5 +1,4 @@
 
-import { recipes } from './data.js'; // Keep recipes if still using from data.js
 let categories = []; // Will be filled from CSV
 
 // Load categories from CSV file
