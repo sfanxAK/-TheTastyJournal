@@ -1,6 +1,11 @@
-import { recipes, categories } from './data.js';
-import { setupSearch } from './search.js';
-import { setupNewsletter } from './newsletter.js';
+import { recipes, loadRecipesFromCSV } from './data.js';
+document.addEventListener('DOMContentLoaded', () => {
+  loadRecipesFromCSV(() => {
+    // 🔁 Run your functions to show recipes after data is loaded
+    displayAllRecipes(); // or whatever function you're calling
+  });
+});
+
 
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');

@@ -1,9 +1,10 @@
 
+import { recipes } from './data.js'; // Keep recipes if still using from data.js
 let categories = []; // Will be filled from CSV
 
 // Load categories from CSV file
 function loadCategoriesFromCSV(callback) {
-  Papa.parse('/data/categories.csv', {
+  Papa.parse('https://sfanxak.github.io/-TheTastyJournal/data/categories.csv', {
     download: true,
     header: true,
     skipEmptyLines: true,
