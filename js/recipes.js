@@ -1,4 +1,4 @@
-import { recipes, categories, loadRecipesFromCSV } from 'https://sfanxak.github.io/-TheTastyJournal/data.js';
+import { recipes, categories, loadRecipesFromCSV } from 'https://sfanxak.github.io/-TheTastyJournal/js/data.js';
 import { setupSearch } from './search.js';
 import { setupNewsletter } from './newsletter.js';
 
