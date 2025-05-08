@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head href="/-TheTastyJournal/">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/favicon-the-Tasty-Journal.webp">
   <title>The Tasty Journal | Categories</title>
   <link rel="stylesheet" href="https://sfanxak.github.io/-TheTastyJournal/css/style.css">
-  <link
-  rel="preload"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  as="style"
-  onload="this.onload=null;this.rel='stylesheet';"
-  />
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet';" />
   <noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDutX_psBuAFVHqBMb33bYbU-gVfuGOHm4",
+      authDomain: "the-tasty-journal.firebaseapp.com",
+      projectId: "the-tasty-journal",
+      storageBucket: "the-tasty-journal.firebasestorage.app",
+      messagingSenderId: "214465575922",
+      appId: "1:214465575922:web:33e7ad5b6a012140dcc96b",
+      measurementId: "G-BX0WL1RS0S"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Fetch categories from Firestore
+    async function fetchCategories() {
+      const categoriesCollection = collection(db, "categories");
+      const categorySnapshot = await getDocs(categoriesCollection);
+      const categoryList = categorySnapshot.docs.map(doc => doc.data());
+      return categoryList;
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -150,6 +174,7 @@
       </div>
     </div>
   </footer>
+  
   <script type="module" src="./js/categories.js"></script>
 </body>
 </html>
