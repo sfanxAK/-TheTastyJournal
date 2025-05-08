@@ -1,4 +1,132 @@
-import { recipes, categories } from './data.js';
+
+let categories = []; // Will be filled from CSV
+
+// Load categories from CSV file
+function loadCategoriesFromCSV(callback) {
+  Papa.parse('/data/categories.csv', {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: function(results) {
+      categories = results.data.map(cat => ({
+        id: Number(cat.id),
+        name: cat.name,
+        description: cat.description,
+        image: cat.image
+      }));
+      callback(); // Run the rest after loading
+    },
+    error: function(err) {
+      console.error('Failed to load CSV:', err);
+    }
+  });
+}
+
+// Show all categories on page
+function displayAllCategories() {
+  const categoriesGrid = document.getElementById('categories-grid');
+  if (!categoriesGrid) return;
+
+  categoriesGrid.innerHTML = '';
+
+  categories.forEach(category => {
+    const categoryElement = document.createElement('div');
+    categoryElement.className = 'category-card';
+
+    categoryElement.innerHTML = `
+      <div class="category-img">
+        <img src="${category.image}" alt="${category.name}">
+      </div>
+      <div class="category-content">
+        <h2>${category.name}</h2>
+        <p>${category.description}</p>
+        <a href="/pages/categories.html?category=${encodeURIComponent(category.name.toLowerCase())}" class="btn btn-primary">View Recipes</a>
+      </div>
+    `;
+
+    categoriesGrid.appendChild(categoryElement);
+  });
+}
+
+// Show recipes by category
+function displayCategoryRecipes(categoryName) {
+  const categoryHeader = document.getElementById('category-header');
+  const categoryRecipesContainer = document.getElementById('category-recipes-container');
+
+  const category = categories.find(
+    c => c.name.toLowerCase() === categoryName.toLowerCase()
+  );
+
+  if (!category || !categoryHeader || !categoryRecipesContainer) return;
+
+  categoryHeader.innerHTML = `
+    <a href="/pages/categories.html" class="back-link"><i class="fas fa-arrow-left"></i> All Categories</a>
+    <h1>${category.name}</h1>
+    <p>${category.description}</p>
+  `;
+
+  const filteredRecipes = recipes.filter(
+    r => r.category.toLowerCase() === categoryName.toLowerCase()
+  );
+
+  categoryRecipesContainer.innerHTML = '';
+
+  if (filteredRecipes.length > 0) {
+    filteredRecipes.forEach(recipe => {
+      const recipeElement = document.createElement('article');
+      recipeElement.className = 'article-card';
+      recipeElement.innerHTML = `
+        <div class="article-img">
+          <img src="${recipe.image}" alt="${recipe.title}">
+        </div>
+        <div class="article-content">
+          <div class="article-meta">
+            <span class="article-category">${recipe.category}</span>
+            <span class="article-date">${recipe.date}</span>
+          </div>
+          <h3 class="article-title">${recipe.title}</h3>
+          <p class="article-excerpt">${recipe.excerpt}</p>
+          <a href="/pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      `;
+      categoryRecipesContainer.appendChild(recipeElement);
+    });
+  } else {
+    categoryRecipesContainer.innerHTML = `
+      <div class="no-recipes">
+        <p>No recipes found in this category.</p>
+        <a href="/pages/recipes.html" class="btn btn-secondary">View All Recipes</a>
+      </div>
+    `;
+  }
+}
+
+// Handle URL to show specific category
+function handleUrlParams() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryParam = urlParams.get('category');
+
+  const allCategoriesSection = document.getElementById('all-categories-section');
+  const categoryRecipesSection = document.getElementById('category-recipes-section');
+
+  if (categoryParam) {
+    if (allCategoriesSection) allCategoriesSection.style.display = 'none';
+    if (categoryRecipesSection) categoryRecipesSection.style.display = 'block';
+    displayCategoryRecipes(categoryParam);
+  } else {
+    if (allCategoriesSection) allCategoriesSection.style.display = 'block';
+    if (categoryRecipesSection) categoryRecipesSection.style.display = 'none';
+    displayAllCategories();
+  }
+}
+
+// Run everything after DOM and CSV are ready
+document.addEventListener('DOMContentLoaded', () => {
+  loadCategoriesFromCSV(() => {
+    handleUrlParams();
+  });
+});
+
 import { setupSearch } from './search.js';
 import { setupNewsletter } from './newsletter.js';
 
@@ -53,114 +181,6 @@ setupSearch();
 // Initialize newsletter functionality
 setupNewsletter();
 
-// Display all categories
-function displayAllCategories() {
-  if (!categoriesGrid) return;
-  
-  categoriesGrid.innerHTML = '';
-  
-  categories.forEach(category => {
-    const categoryElement = document.createElement('div');
-    categoryElement.className = 'category-card';
-    
-    categoryElement.innerHTML = `
-      <div class="category-img">
-        <img src="${category.image}" alt="${category.name}">
-      </div>
-      <div class="category-content">
-        <h2>${category.name}</h2>
-        <p>${category.description}</p>
-        <a href="/pages/categories.html?category=${encodeURIComponent(category.name.toLowerCase())}" class="btn btn-primary">View Recipes</a>
-      </div>
-    `;
-    
-    categoriesGrid.appendChild(categoryElement);
-  });
-}
-
-// Display recipes by category
-function displayCategoryRecipes(categoryName) {
-  if (!categoryRecipesContainer || !categoryHeader) return;
-  
-  // Find category
-  const category = categories.find(
-    c => c.name.toLowerCase() === categoryName.toLowerCase()
-  );
-  
-  if (!category) return;
-  
-  // Update category header
-  categoryHeader.innerHTML = `
-    <a href="/pages/categories.html" class="back-link"><i class="fas fa-arrow-left"></i> All Categories</a>
-    <h1>${category.name}</h1>
-    <p>${category.description}</p>
-  `;
-  
-  // Filter recipes by category
-  const filteredRecipes = recipes.filter(
-    recipe => recipe.category.toLowerCase() === categoryName.toLowerCase()
-  );
-  
-  // Clear container
-  categoryRecipesContainer.innerHTML = '';
-  
-  // Display recipes or no results message
-  if (filteredRecipes.length > 0) {
-    filteredRecipes.forEach(recipe => {
-      const recipeElement = document.createElement('article');
-      recipeElement.className = 'article-card';
-      
-      recipeElement.innerHTML = `
-        <div class="article-img">
-          <img src="${recipe.image}" alt="${recipe.title}">
-        </div>
-        <div class="article-content">
-          <div class="article-meta">
-            <span class="article-category">${recipe.category}</span>
-            <span class="article-date">${recipe.date}</span>
-          </div>
-          <h3 class="article-title">${recipe.title}</h3>
-          <p class="article-excerpt">${recipe.excerpt}</p>
-          <a href="/pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      `;
-      
-      categoryRecipesContainer.appendChild(recipeElement);
-    });
-  } else {
-    categoryRecipesContainer.innerHTML = `
-      <div class="no-recipes">
-        <p>No recipes found in this category.</p>
-        <a href="/pages/recipes.html" class="btn btn-secondary">View All Recipes</a>
-      </div>
-    `;
-  }
-}
-
-// Handle URL parameters
-function handleUrlParams() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const categoryParam = urlParams.get('category');
-  
-  if (categoryParam) {
-    // Display specific category recipes
-    if (allCategoriesSection) allCategoriesSection.style.display = 'none';
-    if (categoryRecipesSection) categoryRecipesSection.style.display = 'block';
-    
-    displayCategoryRecipes(categoryParam);
-    
-    // Update page title
-    const categoryName = categories.find(
-      c => c.name.toLowerCase() === categoryParam.toLowerCase()
-    )?.name || categoryParam;
-    
-    document.title = `${categoryName} Recipes | Culinary Canvas`;
-  } else {
-    // Display all categories
-    if (allCategoriesSection) allCategoriesSection.style.display = 'block';
-    if (categoryRecipesSection) categoryRecipesSection.style.display = 'none';
-  }
-}
 
 // Add styles specific to categories page
 function addCategoryStyles() {
