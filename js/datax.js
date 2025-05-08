@@ -282,47 +282,7 @@ export const recipes = [
     `,
     tags: ["italian","curry", "vegetarian", "chickpea", "dinner", "quick"]
   },
-  { 
-    id: 9,
-    title: "Creamy Garlic Parmesan Risotto",
-    category: "Italian",
-    date: "August 15, 2023",
-    image: "https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ_img4.webp",
-    views: 1250,
-    excerpt: "A luxurious, creamy risotto packed with garlic and parmesan flavors that's perfect for a cozy dinner.",
-    content: `
-      <p>This creamy garlic parmesan risotto is the ultimate comfort food. With its rich flavor and velvety texture, it's guaranteed to impress even the most discerning dinner guests.</p>
-      <h3>Ingredients</h3>
-      <ul>
-        <li>1 1/2 cups Arborio rice</li>
-        <li>6 cups chicken broth, warmed</li>
-        <li>1 cup dry white wine</li>
-        <li>1 medium onion, finely diced</li>
-        <li>4 cloves garlic, minced</li>
-        <li>2 tbsp olive oil</li>
-        <li>3 tbsp butter</li>
-        <li>1 cup freshly grated Parmesan cheese</li>
-        <li>Salt and freshly ground black pepper to taste</li>
-        <li>2 tbsp fresh parsley, chopped</li>
-      </ul>
-      <h3>Instructions</h3>
-      <ol>
-        <li>In a large pot, heat the olive oil and 1 tbsp of butter over medium heat.</li>
-        <li>Add the onion and sauté until translucent, about 3-4 minutes.</li>
-        <li>Add the garlic and cook for another minute until fragrant.</li>
-        <li>Add the Arborio rice and stir to coat with the oil and butter. Toast the rice for about 2 minutes.</li>
-        <li>Pour in the white wine and stir until it's almost completely absorbed.</li>
-        <li>Begin adding the warm broth, one ladle at a time, stirring frequently. Wait until each addition is almost completely absorbed before adding more.</li>
-        <li>Continue this process until the rice is creamy and al dente, about 18-20 minutes.</li>
-        <li>Remove from heat and stir in the remaining butter and Parmesan cheese.</li>
-        <li>Season with salt and pepper to taste.</li>
-        <li>Garnish with fresh parsley before serving.</li>
-      </ol>
-      <p>Serve immediately for the best texture and flavor. This risotto pairs beautifully with grilled chicken or a simple green salad.</p>
-    `,
-    tags: ["risotto", "italian", "dinner", "comfort food"]
-  },
-
+  
 ];
 
 // Categories data

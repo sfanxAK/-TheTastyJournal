@@ -29,9 +29,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/media/TTJ-img14.webp">
+      <!-- Firebase SDKs -->
+    <script type="module">
+      // Import the Firebase modules
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+
+      // Your Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDutX_psBuAFVHqBMb33bYbU-gVfuGOHm4",
+        authDomain: "the-tasty-journal.firebaseapp.com",
+        projectId: "the-tasty-journal",
+        storageBucket: "the-tasty-journal.firebasestorage.app",
+        messagingSenderId: "214465575922",
+        appId: "1:214465575922:web:33e7ad5b6a012140dcc96b",
+        measurementId: "G-BX0WL1RS0S"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </head>
-  
-  
+
 <body>
   <header>
     <div class="container">
@@ -79,6 +99,7 @@
       <button id="mobile-search-btn"><i class="fas fa-search"></i></button>
     </div>
   </div>
+  
 
   <main>
     <img
@@ -185,8 +206,6 @@
   </footer>
 
   <script type="module" src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/js/data.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/js/search.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal@c9951464d9f2dddb1302acbda42fca2b7da21482/js/newsletter.js" defer></script>
+
 </body>
 </html>
