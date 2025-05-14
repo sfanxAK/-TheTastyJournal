@@ -1,4 +1,4 @@
-import { recipes } from './data.js';
+import { recipes, categories, loadRecipesFromCSV } from './data.js';
 import { setupSearch } from './search.js';
 
 // Get recipe ID from URL parameters

@@ -1,4 +1,3 @@
-
 let categories = []; // Will be filled from CSV
 
 // Load categories from CSV file
