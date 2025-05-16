@@ -1,25 +1,4 @@
-let categories = []; // Will be filled from CSV
-
-// Load categories from CSV file
-function loadCategoriesFromCSV(callback) {
-  Papa.parse('https://sfanxak.github.io/-TheTastyJournal/data/categories.csv', {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: function(results) {
-      categories = results.data.map(cat => ({
-        id: Number(cat.id),
-        name: cat.name,
-        description: cat.description,
-        image: cat.image
-      }));
-      callback(); // Run the rest after loading
-    },
-    error: function(err) {
-      console.error('Failed to load CSV:', err);
-    }
-  });
-}
+import { categories, loadCategoriesFromCSV } from './data.js';
 
 // Show all categories on page
 function displayAllCategories() {

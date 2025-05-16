@@ -1,4 +1,4 @@
-import { recipes, loadRecipesFromCSV } from './data.js';
+import { recipes, loadRecipesFromCSV, categories, loadCategoriesFromCSV } from './data.js';
 
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');
@@ -12,12 +12,17 @@ const allRecipesSection = document.getElementById('all-recipes-section');
 const searchResultsSection = document.getElementById('search-results-section');
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadRecipesFromCSV(() => {
-    // 🔁 Run your functions to show recipes after data is loaded
-    displayAllRecipes(); // or whatever function you're calling
+  loadCategoriesFromCSV(() => {
+    displayCategories(); // now this will work
   });
-});
 
+  loadRecipesFromCSV(() => {
+    displayAllRecipes(); // this already works
+    handleUrlParams();   // needed if viewing a single recipe
+  });
+
+  addRecipeStyles();
+});
 
 // Mobile Navigation Toggle
 if (hamburger) {
@@ -70,7 +75,7 @@ function displayCategories() {
         <img src="${category.image}" alt="${category.name}">
       </div>
       <h3>${category.name}</h3>
-      <a href="/pages/categories.html?category=${encodeURIComponent(category.name.toLowerCase())}" class="category-link">View Recipes</a>
+      <a href="../pages/categories.html?category=${encodeURIComponent(category.name.toLowerCase())}" class="category-link">View Recipes</a>
       `;
     
     categoriesContainer.appendChild(categoryElement);
@@ -512,3 +517,4 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
