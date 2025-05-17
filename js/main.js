@@ -1,4 +1,4 @@
-import { recipes } from './data.js';
+import { recipes, loadRecipesFromCSV } from './data.js';
 import { setupSearch } from './search.js';
 import { setupNewsletter } from './newsletter.js';
 
@@ -20,6 +20,19 @@ if (hamburger) {
     spans.forEach(span => span.classList.toggle('active'));
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadCategoriesFromCSV(() => {
+    displayCategories(); // now this will work
+  });
+
+  loadRecipesFromCSV(() => {
+    displayAllRecipes(); // this already works
+    handleUrlParams();   // needed if viewing a single recipe
+  });
+
+  addRecipeStyles();
+});
 
 // Close mobile nav when clicking outside
 document.addEventListener('click', (e) => {
@@ -71,7 +84,7 @@ function renderRecipes(container, recipesList) {
         </div>
         <h3 class="article-title">${recipe.title}</h3>
         <p class="article-excerpt">${recipe.excerpt}</p>
-        <a href="pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        <a href="pages/recipe-post.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
       </div>
     `;
     

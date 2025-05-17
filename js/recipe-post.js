@@ -84,6 +84,7 @@ async function init() {
   console.log("Parsed recipes:", recipes);
   console.log("Recipe ID from URL:", recipeId);
   const recipe = recipes.find(r => String(r.id) === recipeId);
+  window.debugRecipes = recipes;
 
   if (!recipe) {
     window.location.href = '/pages/recipes.html';

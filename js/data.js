@@ -24,34 +24,36 @@ export function loadCategoriesFromCSV(callback) {
 // Recipe data
 export let recipes = []; // Will be loaded from CSV
 
-export function loadRecipesFromCSV(callback) {
-  Papa.parse('../data/recipes.csv', {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: function(results) {
-      recipes = results.data.map(recipe => ({
-        id: Number(recipe.id),
-        title: recipe.title,
-        excerpt: recipe.excerpt,
-        content: recipe.content, // HTML string
-        date: recipe.date,
-        image: recipe.image,
-        category: recipe.category,
-        tags: recipe.tags?.split(',').map(tag => tag.trim()) || [],
-        views: Number(recipe.views),
-        prepTime: recipe.prepTime || '',
-        cookTime: recipe.cookTime || '',
-        totalTime: recipe.totalTime || '',
-        servings: recipe.servings || '',
-        difficulty: recipe.difficulty || ''
-        // ingredients and instructions are embedded in content
-      }));
-      callback();
-    },
-    error: function(err) {
-      console.error('Failed to load recipes CSV:', err);
-    }
+export function loadRecipesFromCSV() {
+  return new Promise((resolve, reject) => {
+    Papa.parse('../data/recipes.csv', {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: function(results) {
+        recipes = results.data.map(recipe => ({
+          id: Number(recipe.id),
+          title: recipe.title,
+          excerpt: recipe.excerpt,
+          content: recipe.content,
+          date: recipe.date,
+          image: recipe.image,
+          category: recipe.category,
+          tags: recipe.tags?.split(',').map(tag => tag.trim()) || [],
+          views: Number(recipe.views),
+          prepTime: recipe.prepTime || '',
+          cookTime: recipe.cookTime || '',
+          totalTime: recipe.totalTime || '',
+          servings: recipe.servings || '',
+          difficulty: recipe.difficulty || ''
+        }));
+        resolve(); // ✅ Resolve when done
+      },
+      error: function(err) {
+        console.error('Failed to load recipes CSV:', err);
+        reject(err);
+      }
+    });
   });
 }
 

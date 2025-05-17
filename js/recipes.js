@@ -103,115 +103,12 @@ function displayAllRecipes() {
         </div>
         <h3 class="article-title">${recipe.title}</h3>
         <p class="article-excerpt">${recipe.excerpt}</p>
-        <a href="/pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        <a href="/pages/recipe-post.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
       </div>
     `;
     
     allRecipesContainer.appendChild(recipeElement);
   });
-}
-
-// Display a single recipe
-function displaySingleRecipe(recipeId) {
-  const recipe = recipes.find(r => r.id === parseInt(recipeId));
-  
-  if (!recipe || !singleRecipeContainer) return;
-  
-  // Hide other sections and show single recipe section
-  if (allRecipesSection) allRecipesSection.style.display = 'none';
-  if (searchResultsSection) searchResultsSection.style.display = 'none';
-  singleRecipeSection.style.display = 'block';
-  
-  // Set page title
-  document.title = `${recipe.title} | Culinary Canvas`;
-  
-  // Create single recipe HTML
-  singleRecipeContainer.innerHTML = `
-    <div class="recipe-header">
-      <a href="/pages/recipes.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to All Recipes</a>
-      <h1>${recipe.title}</h1>
-      <div class="recipe-meta">
-        <span class="recipe-category"><i class="fas fa-utensils"></i> ${recipe.category}</span>
-        <span class="recipe-date"><i class="far fa-calendar-alt"></i> ${recipe.date}</span>
-        <span class="recipe-views"><i class="far fa-eye"></i> ${recipe.views} views</span>
-      </div>
-    </div>
-    <div class="recipe-image">
-      <img src="${recipe.image}" alt="${recipe.title}">
-    </div>
-    <div class="recipe-content">
-      ${recipe.content}
-    </div>
-    <div class="recipe-tags">
-      ${recipe.tags ? recipe.tags.map(tag => `<a href="/pages/recipes.html?search=${tag}" class="recipe-tag">#${tag}</a>`).join('') : ''}
-    </div>
-    <div class="recipe-share">
-      <h3>Share this Recipe</h3>
-      <div class="share-buttons">
-        <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="share-btn pinterest"><i class="fab fa-pinterest-p"></i></a>
-        <a href="#" class="share-btn email"><i class="far fa-envelope"></i></a>
-      </div>
-    </div>
-    <div class="related-recipes">
-      <h3>You Might Also Like</h3>
-      <div class="article-grid" id="related-recipes-container">
-        <!-- Related recipes will be loaded dynamically -->
-      </div>
-    </div>
-  `;
-  
-  // Display related recipes (same category but different ID)
-  const relatedRecipesContainer = document.getElementById('related-recipes-container');
-  
-  if (relatedRecipesContainer) {
-    const relatedRecipes = recipes
-      .filter(r => r.category === recipe.category && r.id !== recipe.id)
-      .slice(0, 3);
-    
-    relatedRecipes.forEach(relatedRecipe => {
-      const recipeElement = document.createElement('article');
-      recipeElement.className = 'article-card';
-      
-      recipeElement.innerHTML = `
-        <div class="article-img">
-          <img src="${relatedRecipe.image}" alt="${relatedRecipe.title}">
-        </div>
-        <div class="article-content">
-          <h3 class="article-title">${relatedRecipe.title}</h3>
-          <a href="/pages/recipes.html?id=${relatedRecipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      `;
-      
-      relatedRecipesContainer.appendChild(recipeElement);
-    });
-  }
-  
-  // Scroll to top
-  window.scrollTo(0, 0);
-}
-
-// Handle URL parameters
-function handleUrlParams() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const recipeId = urlParams.get('id');
-  const searchQuery = urlParams.get('search');
-  
-  if (recipeId) {
-    // Display single recipe
-    displaySingleRecipe(recipeId);
-  } else if (searchQuery) {
-    // Search is handled by setupSearch() function
-    if (allRecipesSection) allRecipesSection.style.display = 'none';
-    if (searchResultsSection) searchResultsSection.style.display = 'block';
-    if (singleRecipeSection) singleRecipeSection.style.display = 'none';
-  } else {
-    // Display all recipes
-    if (allRecipesSection) allRecipesSection.style.display = 'block';
-    if (searchResultsSection) searchResultsSection.style.display = 'none';
-    if (singleRecipeSection) singleRecipeSection.style.display = 'none';
-  }
 }
 
 // Add styles specific to recipes page
