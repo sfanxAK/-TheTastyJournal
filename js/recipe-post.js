@@ -79,12 +79,10 @@ setupFilters();
 async function init() {
   await loadRecipesFromCSV();
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const recipeId = parseInt(urlParams.get('id'));
+  const recipeId = getQueryParam("id");
 
   console.log("Parsed recipes:", recipes);
   console.log("Recipe ID from URL:", recipeId);
-
   const recipe = recipes.find(r => String(r.id) === recipeId);
 
   if (!recipe) {
