@@ -34,12 +34,18 @@ export function loadRecipesFromCSV(callback) {
         id: Number(recipe.id),
         title: recipe.title,
         excerpt: recipe.excerpt,
-        content: recipe.content,
+        content: recipe.content, // HTML string
         date: recipe.date,
         image: recipe.image,
         category: recipe.category,
-        tags: recipe.tags.split(',').map(tag => tag.trim()),
+        tags: recipe.tags?.split(',').map(tag => tag.trim()) || [],
         views: Number(recipe.views),
+        prepTime: recipe.prepTime || '',
+        cookTime: recipe.cookTime || '',
+        totalTime: recipe.totalTime || '',
+        servings: recipe.servings || '',
+        difficulty: recipe.difficulty || ''
+        // ingredients and instructions are embedded in content
       }));
       callback();
     },
@@ -48,5 +54,6 @@ export function loadRecipesFromCSV(callback) {
     }
   });
 }
+
 
 
