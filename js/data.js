@@ -55,5 +55,24 @@ export function loadRecipesFromCSV(callback) {
   });
 }
 
+export function loadRecipePost() {
+  const recipeId = getQueryParam("id");
+  fetch("data/recipes.csv")
+      .then(response => response.text())
+      .then(csv => {
+          const results = Papa.parse(csv, {
+              header: true,
+              skipEmptyLines: true
+          });
+          const recipes = results.data;
+          const recipe = recipes.find(r => String(r.id) === recipeId); // Ensures correct match
+          renderRecipePost(recipe);
+      })
+      .catch(error => {
+          console.error("Error loading recipe:", error);
+          document.getElementById("recipe-post").innerHTML = "<p>Error loading recipe.</p>";
+      });
+}
+
 
 

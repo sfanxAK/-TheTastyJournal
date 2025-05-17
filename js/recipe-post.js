@@ -5,22 +5,42 @@ import { setupFilters } from './filters.js';
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const mobileNav = document.querySelector('.mobile-nav');
+
+// Mobile Navigation Toggle
 if (hamburger) {
   hamburger.addEventListener('click', () => {
     mobileNav.classList.toggle('active');
     document.body.classList.toggle('no-scroll');
-    hamburger.querySelectorAll('span').forEach(span => span.classList.toggle('active'));
+    
+    // Animate hamburger icon
+    const spans = hamburger.querySelectorAll('span');
+    spans.forEach(span => span.classList.toggle('active'));
   });
 }
+
+// Close mobile nav when clicking outside
 document.addEventListener('click', (e) => {
-  if (mobileNav.classList.contains('active') &&
-      !mobileNav.contains(e.target) &&
+  if (mobileNav.classList.contains('active') && 
+      !mobileNav.contains(e.target) && 
       !hamburger.contains(e.target)) {
     mobileNav.classList.remove('active');
     document.body.classList.remove('no-scroll');
-    hamburger.querySelectorAll('span').forEach(span => span.classList.remove('active'));
+    
+    // Reset hamburger icon
+    const spans = hamburger.querySelectorAll('span');
+    spans.forEach(span => span.classList.remove('active'));
   }
 });
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
 
 // CSS Animations
 const style = document.createElement('style');
@@ -61,7 +81,11 @@ async function init() {
 
   const urlParams = new URLSearchParams(window.location.search);
   const recipeId = parseInt(urlParams.get('id'));
-  const recipe = recipes.find(r => r.id === recipeId);
+
+  console.log("Parsed recipes:", recipes);
+  console.log("Recipe ID from URL:", recipeId);
+
+  const recipe = recipes.find(r => String(r.id) === recipeId);
 
   if (!recipe) {
     window.location.href = '/pages/recipes.html';
