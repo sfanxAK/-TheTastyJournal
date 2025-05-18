@@ -1,6 +1,5 @@
 import { recipes, categories, loadRecipesFromCSV } from './data.js';
 import { setupSearch } from './search.js';
-import { setupFilters } from './filters.js';
 
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
@@ -73,18 +72,21 @@ document.head.appendChild(style);
 
 // Initialize Search & Filters
 setupSearch();
-setupFilters();
 
 // Main loader function
 async function init() {
   await loadRecipesFromCSV();
 
-  const recipeId = getQueryParam("id");
+  const urlParams = new URLSearchParams(window.location.search);
+  const recipeId = urlParams.get("id");
 
+  const recipe = recipes.find(r => String(r.id) === recipeId);
+
+  // 👇 Add this
+  window.debugRecipes = recipes;
+  window.debugRecipeId = recipeId;
   console.log("Parsed recipes:", recipes);
   console.log("Recipe ID from URL:", recipeId);
-  const recipe = recipes.find(r => String(r.id) === recipeId);
-  window.debugRecipes = recipes;
 
   if (!recipe) {
     window.location.href = '/pages/recipes.html';
