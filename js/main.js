@@ -9,6 +9,7 @@ const header = document.querySelector('header');
 const latestArticlesContainer = document.getElementById('latest-articles-container');
 const mostViewedContainer = document.getElementById('most-viewed-container');
 
+
 // Mobile Navigation Toggle
 if (hamburger) {
   hamburger.addEventListener('click', () => {
@@ -20,19 +21,6 @@ if (hamburger) {
     spans.forEach(span => span.classList.toggle('active'));
   });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  loadCategoriesFromCSV(() => {
-    displayCategories(); // now this will work
-  });
-
-  loadRecipesFromCSV(() => {
-    displayAllRecipes(); // this already works
-    handleUrlParams();   // needed if viewing a single recipe
-  });
-
-  addRecipeStyles();
-});
 
 // Close mobile nav when clicking outside
 document.addEventListener('click', (e) => {

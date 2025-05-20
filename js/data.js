@@ -59,7 +59,7 @@ export function loadRecipesFromCSV() {
 
 export function loadRecipePost() {
   const recipeId = getQueryParam("id");
-  fetch("data/recipes.csv")
+  fetch("../data/recipes.csv")
       .then(response => response.text())
       .then(csv => {
           const results = Papa.parse(csv, {
