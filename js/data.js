@@ -1,25 +1,29 @@
 // Category data
 export let categories = [];
 
-export function loadCategoriesFromCSV(callback) {
-  Papa.parse('../data/categories.csv', {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: function(results) {
-      categories = results.data.map(cat => ({
-        id: Number(cat.id),
-        name: cat.name,
-        description: cat.description,
-        image: cat.image
-      }));
-      callback(); // Run the rest after loading
-    },
-    error: function(err) {
-      console.error('Failed to load CSV:', err);
-    }
+export function loadCategoriesFromCSV() {
+  return new Promise((resolve, reject) => {
+    Papa.parse('../data/categories.csv', {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: function(results) {
+        categories = results.data.map(cat => ({
+          id: Number(cat.id),
+          name: cat.name,
+          description: cat.description,
+          image: cat.image
+        }));
+        resolve();
+      },
+      error: function(err) {
+        console.error('Failed to load categories CSV:', err);
+        reject(err);
+      }
+    });
   });
 }
+
 
 // Recipe data
 export let recipes = []; // Will be loaded from CSV
@@ -40,12 +44,11 @@ export function loadRecipesFromCSV() {
           image: recipe.image,
           category: recipe.category,
           tags: recipe.tags?.split(',').map(tag => tag.trim()) || [],
-          views: Number(recipe.views),
-          prepTime: recipe.prepTime || '',
-          cookTime: recipe.cookTime || '',
-          totalTime: recipe.totalTime || '',
-          servings: recipe.servings || '',
-          difficulty: recipe.difficulty || ''
+          prepTime: recipe.prepTime,
+          cookTime: recipe.cookTime,
+          totalTime: recipe.totalTime,
+          servings: recipe.servings,
+          difficulty: recipe.difficulty
         }));
         resolve(); // ✅ Resolve when done
       },
@@ -66,8 +69,7 @@ export function loadRecipePost() {
               header: true,
               skipEmptyLines: true
           });
-          const recipes = results.data;
-          const recipe = recipes.find(r => String(r.id) === recipeId); // Ensures correct match
+          const recipe = results.data.find(r => Number(r.id) === Number(recipeId));
           renderRecipePost(recipe);
       })
       .catch(error => {

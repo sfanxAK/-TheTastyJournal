@@ -1,4 +1,57 @@
-import { categories, loadCategoriesFromCSV } from './data.js';
+import { categories, recipes, loadCategoriesFromCSV, loadRecipesFromCSV } from './data.js';
+import { setupSearch } from './search.js';
+import { setupNewsletter } from './newsletter.js';
+
+// DOM Elements
+const hamburger = document.querySelector('.hamburger');
+const mobileNav = document.querySelector('.mobile-nav');
+const header = document.querySelector('header');
+
+// Mobile Navigation Toggle
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
+    
+    // Animate hamburger icon
+    const spans = hamburger.querySelectorAll('span');
+    spans.forEach(span => span.classList.toggle('active'));
+  });
+}
+
+// Close mobile nav when clicking outside
+document.addEventListener('click', (e) => {
+  if (mobileNav.classList.contains('active') && 
+      !mobileNav.contains(e.target) && 
+      !hamburger.contains(e.target)) {
+    mobileNav.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+    
+    // Reset hamburger icon
+    const spans = hamburger.querySelectorAll('span');
+    spans.forEach(span => span.classList.remove('active'));
+  }
+});
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+// End of Header Scroll Effect
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  Promise.all([
+    loadCategoriesFromCSV(),
+    loadRecipesFromCSV()
+  ]).then(() => {
+    handleUrlParams();
+  });
+});
 
 // Show all categories on page
 function displayAllCategories() {
@@ -64,7 +117,7 @@ function displayCategoryRecipes(categoryName) {
           </div>
           <h3 class="article-title">${recipe.title}</h3>
           <p class="article-excerpt">${recipe.excerpt}</p>
-          <a href="/pages/recipes.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          <a href="/pages/recipe-post.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
         </div>
       `;
       categoryRecipesContainer.appendChild(recipeElement);
@@ -105,53 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-import { setupSearch } from './search.js';
-import { setupNewsletter } from './newsletter.js';
 
-// DOM Elements
-const hamburger = document.querySelector('.hamburger');
-const mobileNav = document.querySelector('.mobile-nav');
-const header = document.querySelector('header');
-const categoriesGrid = document.getElementById('categories-grid');
-const allCategoriesSection = document.getElementById('all-categories-section');
-const categoryRecipesSection = document.getElementById('category-recipes-section');
-const categoryHeader = document.getElementById('category-header');
-const categoryRecipesContainer = document.getElementById('category-recipes-container');
-
-// Mobile Navigation Toggle
-if (hamburger) {
-  hamburger.addEventListener('click', () => {
-    mobileNav.classList.toggle('active');
-    document.body.classList.toggle('no-scroll');
-    
-    // Animate hamburger icon
-    const spans = hamburger.querySelectorAll('span');
-    spans.forEach(span => span.classList.toggle('active'));
-  });
-}
-
-// Close mobile nav when clicking outside
-document.addEventListener('click', (e) => {
-  if (mobileNav.classList.contains('active') && 
-      !mobileNav.contains(e.target) && 
-      !hamburger.contains(e.target)) {
-    mobileNav.classList.remove('active');
-    document.body.classList.remove('no-scroll');
-    
-    // Reset hamburger icon
-    const spans = hamburger.querySelectorAll('span');
-    spans.forEach(span => span.classList.remove('active'));
-  }
-});
-
-// Header scroll effect
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-});
 
 // Initialize search functionality
 setupSearch();
