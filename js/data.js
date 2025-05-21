@@ -1,7 +1,7 @@
 // Category data
 export let categories = [];
 
-export function loadCategoriesFromCSV() {
+export function loadCategoriesFromCSV(callback) {
   return new Promise((resolve, reject) => {
     Papa.parse('../data/categories.csv', {
       download: true,
@@ -14,11 +14,10 @@ export function loadCategoriesFromCSV() {
           description: cat.description,
           image: cat.image
         }));
-        resolve();
+        callback();
       },
       error: function(err) {
         console.error('Failed to load categories CSV:', err);
-        reject(err);
       }
     });
   });

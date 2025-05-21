@@ -4,15 +4,12 @@ import { recipes, loadRecipesFromCSV, categories, loadCategoriesFromCSV } from '
 const hamburger = document.querySelector('.hamburger');
 const mobileNav = document.querySelector('.mobile-nav');
 const header = document.querySelector('header');
-const categoriesContainer = document.getElementById('categories-container');
 const allRecipesContainer = document.getElementById('all-recipes-container');
-const searchResultsSection = document.getElementById('search-results-section');
+const tabsContainer = document.querySelector('.category-tabs');
+const recipeGrid = document.getElementById('recipe-grid');
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    await loadCategoriesFromCSV();
-    displayCategories();
-    
     await loadRecipesFromCSV();
     displayAllRecipes();
     
@@ -58,27 +55,83 @@ window.addEventListener('scroll', () => {
 });
 
 
-// Display categories
-function displayCategories() {
-  if (!categoriesContainer) return;
-  
-  categoriesContainer.innerHTML = '';
-  
-  categories.forEach(category => {
-    const categoryElement = document.createElement('div');
-    categoryElement.className = 'category-item';
-    
-    categoryElement.innerHTML = `
-      <div class="category-img">
-        <img src="${category.image}" alt="${category.name}">
-      </div>
-      <h3>${category.name}</h3>
-      <a href="../pages/categories.html?category=${encodeURIComponent(category.name.toLowerCase())}" class="category-link">View Recipes</a>
-      `;
-    
-    categoriesContainer.appendChild(categoryElement);
+
+// Display by categories
+
+function renderCategoryTabs() {
+  tabsContainer.innerHTML = '';
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'tab active';
+  allBtn.dataset.category = 'all';
+  allBtn.textContent = 'All';
+  tabsContainer.appendChild(allBtn);
+
+  categories.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'tab';
+    btn.dataset.category = cat.name;
+    btn.textContent = cat.name;
+    tabsContainer.appendChild(btn);
+  });
+
+  // Add click listeners after rendering
+  const categoryTabs = document.querySelectorAll('.category-tabs .tab');
+  categoryTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      categoryTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      filterRecipes(tab.dataset.category);
+    });
   });
 }
+
+function renderRecipeCards(filteredRecipes) {
+  recipeGrid.innerHTML = '';
+
+  filteredRecipes.forEach(recipe => {
+    const card = document.createElement('div');
+    card.className = 'recipe-card';
+    card.innerHTML = `
+      <img src="${recipe.image}" alt="${recipe.title}" loading="lazy">
+      <div class="recipe-meta">
+        <span class="category">${recipe.category.toUpperCase()}</span>
+        <h3>${recipe.title}</h3>
+        <div class="info">
+          <span><i class="far fa-clock"></i> ${recipe.totalTime || '30 mins'}</span>
+          <span class="stars">★★★★★</span>
+        </div>
+      </div>
+    `;
+    recipeGrid.appendChild(card);
+  });
+}
+
+function filterRecipes(category) {
+  const filtered =
+    category === 'all'
+      ? recipes
+      : recipes.filter(r => r.category.toLowerCase() === category.toLowerCase());
+
+  renderRecipeCards(filtered);
+}
+
+// Load everything
+document.addEventListener('DOMContentLoaded', () => {
+  loadCategoriesFromCSV(() => {
+    renderCategoryTabs();
+  });
+
+  loadRecipesFromCSV().then(() => {
+    filterRecipes('all');
+  });
+});
+
+
+
+
+
+
 // Display all recipes
 function displayAllRecipes() {
   
@@ -193,7 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   addRecipeStyles();
 });
-
 
 
 // Add CSS for animations that were referenced in the JS

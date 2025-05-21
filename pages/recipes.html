@@ -76,16 +76,16 @@
       </div>
     </section>
 
-    <!-- Recipe Categories -->
-    <section class="recipe-categories">
-      <div class="container">
-        <h2 class="section-title">Browse by Category</h2>
-        <div class="categories-container" id="categories-container">
-        <div class="recipes-container"></div>
-          <!-- Categories will be loaded dynamically -->
-        </div>
-      </div>
+    <!-- Recipe by Categories -->
+    <section class="recipes-section">      
+      <div class="category-tabs">
+        <button data-category="all" class="tab active">All</button>  
+        <!-- Add more categories if needed -->
+      </div>    
+    
+      <div id="recipe-grid" class="recipe-grid"></div>
     </section>
+    
 
     <!-- All Recipes (default view) -->
     <section class="recipes-container">
@@ -93,16 +93,6 @@
         <h2 class="section-title">All Recipes</h2>
         <div class="article-grid all-recipes-container" id="all-recipes-container">
           <!-- All recipes will be loaded dynamically -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Search Results (only displayed when searching) -->
-    <section class="search-results-section" id="search-results-section">
-      <div class="container">
-        <h2 class="section-title" id="search-results-title">Search Results</h2>
-        <div class="article-grid" id="search-results">
-          <!-- Search results will be loaded dynamically -->
         </div>
       </div>
     </section>
