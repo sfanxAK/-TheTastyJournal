@@ -178,6 +178,28 @@ function setActiveCategory(name) {
   });
 }
 
+// Example card creation inside your recipe rendering logic:
+function renderRecipes(recipes) {
+  recipeContainer.innerHTML = '';
+
+  recipes.forEach(recipe => {
+    const card = document.createElement('div');
+    card.className = 'recipe-card';
+    card.innerHTML = `
+      <img src="${recipe.image}" alt="${recipe.title}">
+      <h3>${recipe.title}</h3>
+      <p>${recipe.excerpt}</p>
+    `;
+
+    // Make sure each card links to the correct recipe-post.html with ID as a parameter
+    card.addEventListener('click', () => {
+      window.location.href = `recipe-post.html?id=${recipe.id}`;
+    });
+
+    recipeContainer.appendChild(card);
+  });
+}
+
 function renderRecipeCards(filteredRecipes) {
   recipeGrid.innerHTML = '';
 
@@ -195,9 +217,17 @@ function renderRecipeCards(filteredRecipes) {
         </div>
       </div>
     `;
+
+    card.addEventListener('click', () => {
+      window.location.href = `recipe-post.html?id=${recipe.id}`;
+    });
+
+
     recipeGrid.appendChild(card);
   });
 }
+
+
 
 function filterRecipes(category) {
   const filtered =
