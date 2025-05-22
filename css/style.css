@@ -789,43 +789,24 @@ footer {
   color: var(--warning-color);
 }
 
+@media (max-width: 600px) {
+  .category-tabs {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 
+  .category-tabs .tab {
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
 
-
-
-
-.categories-list {
-  display: flex;
-  gap: 1rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-wrap: wrap;
+  .tab-dropdown .dropdown-menu {
+    right: 0;
+    left: auto;
+  }
 }
 
-.categories-list a {
-  font-weight: bold;
-  text-transform: uppercase;
-  color: var(--text-dark);
-  text-decoration: none;
-}
 
-.more-dropdown {
-  position: relative;
-}
 
-.more-dropdown .dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  list-style: none;
-  padding: 10px;
-  border: 1px solid #ccc;
-  z-index: 999;
-}
 
-.more-dropdown:hover .dropdown-menu {
-  display: block;
-}
+

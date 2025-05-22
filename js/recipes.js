@@ -8,6 +8,18 @@ const allRecipesContainer = document.getElementById('all-recipes-container');
 const tabsContainer = document.querySelector('.category-tabs');
 const recipeGrid = document.getElementById('recipe-grid');
 
+
+// Load evrything 
+document.addEventListener('DOMContentLoaded', () => {
+  
+  loadCategoriesFromCSV(() => {
+    renderCategoryTabsWithMore(categories);
+  });
+
+  loadRecipesFromCSV().then(() => {
+    filterRecipes('all');
+  });
+});
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     await loadRecipesFromCSV();
@@ -31,6 +43,7 @@ if (hamburger) {
   });
 }
 
+
 // Close mobile nav when clicking outside
 document.addEventListener('click', (e) => {
   if (mobileNav.classList.contains('active') && 
@@ -45,6 +58,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
+
 // Header scroll effect
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) {
@@ -55,10 +69,9 @@ window.addEventListener('scroll', () => {
 });
 
 
-
 // Display by categories
-
-function renderCategoryTabs() {
+// This function renders category tabs and pushes overflow tabs into a "More" dropdown.
+function renderCategoryTabsWithMore(categories) {
   tabsContainer.innerHTML = '';
 
   const allBtn = document.createElement('button');
@@ -67,22 +80,101 @@ function renderCategoryTabs() {
   allBtn.textContent = 'All';
   tabsContainer.appendChild(allBtn);
 
+  const buttons = [];
+
   categories.forEach(cat => {
     const btn = document.createElement('button');
     btn.className = 'tab';
     btn.dataset.category = cat.name;
     btn.textContent = cat.name;
-    tabsContainer.appendChild(btn);
+    buttons.push(btn);
   });
 
-  // Add click listeners after rendering
-  const categoryTabs = document.querySelectorAll('.category-tabs .tab');
-  categoryTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      categoryTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      filterRecipes(tab.dataset.category);
+  // Temporarily add all to measure widths
+  buttons.forEach(btn => tabsContainer.appendChild(btn));
+
+  const availableWidth = tabsContainer.offsetWidth;
+  let currentWidth = allBtn.offsetWidth + 20; // Include gap
+  let maxVisibleIndex = 0;
+
+  const maxTabs = window.innerWidth > 768 ? 12 : categories.length;
+
+  for (let i = 0; i < buttons.length && maxVisibleIndex < maxTabs; i++) {
+    const btnWidth = buttons[i].offsetWidth + 20;
+    if ((currentWidth + btnWidth) < availableWidth) {
+      currentWidth += btnWidth;
+      maxVisibleIndex = i + 1;
+    } else {
+      break;
+    }
+  }
+
+  // Remove all and re-add based on visible count
+  tabsContainer.innerHTML = '';
+  tabsContainer.appendChild(allBtn);
+
+  const visible = buttons.slice(0, maxVisibleIndex);
+  const overflow = buttons.slice(maxVisibleIndex);
+
+  visible.forEach(btn => tabsContainer.appendChild(btn));
+
+  if (overflow.length > 0) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'tab tab-dropdown';
+
+    const moreBtn = document.createElement('button');
+    moreBtn.className = 'tab';
+    moreBtn.innerHTML = 'More <span class="arrow">&#9662;</span>';
+
+    const dropdown = document.createElement('ul');
+    dropdown.className = 'dropdown-menu';
+
+    overflow.forEach(btn => {
+      const li = document.createElement('li');
+      li.textContent = btn.textContent;
+      li.addEventListener('click', () => {
+        setActiveCategory(btn.dataset.category);
+        filterRecipes(btn.dataset.category);
+      });
+      dropdown.appendChild(li);
     });
+
+    wrapper.appendChild(moreBtn);
+    wrapper.appendChild(dropdown);
+    tabsContainer.appendChild(wrapper);
+
+    moreBtn.addEventListener('click', () => dropdown.classList.toggle('show'));
+    document.addEventListener('click', e => {
+      if (!wrapper.contains(e.target)) dropdown.classList.remove('show');
+    });
+  }
+
+  // Add event listeners
+  const allTabs = document.querySelectorAll('.category-tabs .tab');
+  allTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.category;
+      if (cat) {
+        setActiveCategory(cat);
+        filterRecipes(cat);
+      }
+    });
+  });
+}
+
+// Auto re-render on window resize
+window.addEventListener('resize', () => {
+  renderCategoryTabsWithMore(categories);
+});
+
+
+function setActiveCategory(name) {
+  document.querySelectorAll('.category-tabs .tab').forEach(tab => {
+    if (tab.dataset.category === name) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
   });
 }
 
@@ -116,20 +208,47 @@ function filterRecipes(category) {
   renderRecipeCards(filtered);
 }
 
+// CSS styles for dropdown (append to your global style file or <style> block)
+const dropdownStyle = document.createElement('style');
+dropdownStyle.textContent = `
+  .tab-dropdown {
+    position: relative;
+  }
+  .tab-dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+  }
+  .tab-dropdown .dropdown-menu li {
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .tab-dropdown .dropdown-menu li:hover {
+    background-color: #f0f0f0;
+  }
+  .tab-dropdown .dropdown-menu.show {
+    display: block;
+  }
+`;
+document.head.appendChild(dropdownStyle);
+
+
 // Load everything
 document.addEventListener('DOMContentLoaded', () => {
   loadCategoriesFromCSV(() => {
     renderCategoryTabs();
+    renderCategoryNavMenu();
   });
 
   loadRecipesFromCSV().then(() => {
     filterRecipes('all');
   });
 });
-
-
-
-
 
 
 // Display all recipes
