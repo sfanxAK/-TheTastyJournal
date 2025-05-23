@@ -135,6 +135,7 @@ function renderCategoryTabsWithMore(categories) {
       li.addEventListener('click', () => {
         setActiveCategory(btn.dataset.category);
         filterRecipes(btn.dataset.category);
+        dropdown.classList.remove('show');
       });
       dropdown.appendChild(li);
     });
