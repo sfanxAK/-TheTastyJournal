@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/favicon-the-Tasty-Journal.webp">
-  <title>The Tasty Journal | Recipes</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <title>The Tasty Journal | Search Results</title>
+  <link rel="stylesheet" href="https://sfanxak.github.io/-TheTastyJournal/css/style.css">
   <link
   rel="preload"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -18,6 +18,124 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+  main {
+    margin-top: 60px;
+    padding: 60px 40px;
+  }
+
+  #search-results-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--primary-color);
+  }
+
+  #search-results.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .no-results {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 40px;
+  }
+
+  .no-results p {
+    margin-bottom: 20px;
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .article-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+  }
+
+  .article-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .article-img img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .article-content {
+    padding: 15px;
+  }
+
+  .article-title {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+
+  .article-meta {
+    font-size: 0.9rem;
+    color: #777;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .article-excerpt {
+    font-size: 0.95rem;
+    color: #444;
+  }
+
+  .breadcrumb {
+  margin: 8px auto 15px auto;
+  font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    main {
+      padding: 40px 20px;
+    }
+
+    #search-results.recipe-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #search-results-title {
+      font-size: 1.5rem;
+    }
+
+    .article-title {
+      font-size: 1rem;
+    }
+
+    .article-excerpt {
+      font-size: 0.9rem;
+    }
+  }
+  </style>
+  
 </head>
 <body>
   <header>
@@ -28,14 +146,14 @@
                 src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/LOGO-TTJ.webp"
                 alt="navbar logo"
                 loading="lazy"
-                width="120"
-                >
+                width="130"
+                height="70">
         </div>
         <nav>
           <ul class="nav-links">
             <li><a href="../index.html">Home</a></li>
-            <li><a href="./recipes.html" class="active">Recipes</a></li>
-            <li><a href="./categories.html">Categories</a></li>
+            <li><a href="./recipes.html">Recipes</a></li>
+            <li><a href="./categories.html" class="active">Categories</a></li>
             <li><a href="./new.html">New in Cooking</a></li>
             <li><a href="./about.html">About</a></li>
           </ul>
@@ -56,8 +174,8 @@
   <div class="mobile-nav">
     <ul>
       <li><a href="../index.html">Home</a></li>
-      <li><a href="./recipes.html" class="active">Recipes</a></li>
-      <li><a href="./categories.html">Categories</a></li>
+      <li><a href="./recipes.html">Recipes</a></li>
+      <li><a href="./categories.html" class="active">Categories</a></li>
       <li><a href="./new.html">New in Cooking</a></li>
       <li><a href="./about.html">About</a></li>
     </ul>
@@ -68,49 +186,15 @@
   </div>
 
   <main>
-    <!-- Page Banner -->
-    <section class="page-banner">
-      <div class="container">
-        <h1>All Recipes</h1>
-        <p>Explore our collection of delicious recipes</p>
-      </div>
-    </section>
+    <div class="path-container">
+      <nav class="breadcrumb">
+        <a href="recipes.html">Recipes </a> &gt;
+        <a href="recipes.html"> Search Results</a>
+      </nav>
+    </div>
 
-    <!-- Recipe by Categories -->
-    <section class="recipes-section">      
-      <div class="category-tabs-wrapper">
-        <div class="category-tabs">
-          <!-- Tabs will be injected here by JS -->
-        </div>
-      </div>  
-      <div id="recipe-grid" class="recipe-grid"></div>
-    </section>    
-    
-
-    <!-- All Recipes (default view) -->
-    <section class="recipes-container">
-      <div class="container">
-        <h2 class="section-title">New Recipes</h2>
-        <div class="article-grid all-recipes-container" id="all-recipes-container">
-          <!-- All recipes will be loaded dynamically -->
-        </div>
-      </div>
-    </section>
-
-    <section class="newsletter">
-      <div class="container">
-        <div class="newsletter-content">
-          <h2>Subscribe to Our Newsletter</h2>
-          <p>Get the latest recipes and cooking tips delivered straight to your inbox</p>
-          <form id="newsletter-form" action="https://formspree.io/f/xeogoyyg" method="POST">
-            <div class="form-group">
-              <input type="email" name="email" id="email" placeholder="Your email address" required>
-              <button type="submit" class="btn btn-primary">Subscribe</button>
-            </div>
-          </form>
-          <div id="subscription-message"></div>
-        </div>
-      </div>
+    <h2 id="search-results-title"></h2>
+    <section id="search-results" class="recipe-grid">
     </section>
   </main>
 
@@ -119,10 +203,10 @@
       <div class="footer-content">
         <div class="footer-logo">
           <img src="https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/LOGO-TTJ-white.webp"
-          alt="footer logo"
-          loading="lazy"
-          width="320"
-          >
+                alt="footer logo"
+                loading="lazy"
+                width="320"
+                height="219">
           <p>Exploring the art of cooking since 2023</p>
         </div>
         <div class="footer-links">
@@ -150,10 +234,7 @@
       </div>
     </div>
   </footer>
-
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-  <script type="module" src="../js/recipes.js"></script>
   <script type="module" src="../js/search.js"></script>
-
 </body>
 </html>

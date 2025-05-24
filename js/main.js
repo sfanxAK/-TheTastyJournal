@@ -1,4 +1,4 @@
-import { recipes, loadRecipesFromCSV } from './data.js';
+import { recipes, loadRecipesFromCSV, categories, loadCategoriesFromCSV } from './data.js';
 import { setupSearch } from './search.js';
 import { setupNewsletter } from './newsletter.js';
 
@@ -9,7 +9,7 @@ const header = document.querySelector('header');
 const latestArticlesContainer = document.getElementById('latest-articles-container');
 const mostViewedContainer = document.getElementById('most-viewed-container');
 
-
+ 
 // Mobile Navigation Toggle
 if (hamburger) {
   hamburger.addEventListener('click', () => {
