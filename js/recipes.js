@@ -4,31 +4,19 @@ import { recipes, loadRecipesFromCSV, categories, loadCategoriesFromCSV } from '
 const hamburger = document.querySelector('.hamburger');
 const mobileNav = document.querySelector('.mobile-nav');
 const header = document.querySelector('header');
-const allRecipesContainer = document.getElementById('all-recipes-container');
 const tabsContainer = document.querySelector('.category-tabs');
-const recipeGrid = document.getElementById('recipe-grid');
 
 
-// Load evrything 
-document.addEventListener('DOMContentLoaded', () => {
-  
+document.addEventListener('DOMContentLoaded', async () => {
   loadCategoriesFromCSV(() => {
     renderCategoryTabsWithMore(categories);
   });
+  addRecipeStyles();
 
-  loadRecipesFromCSV().then(() => {
-    filterRecipes('all');
-  });
-});
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    await loadRecipesFromCSV();
-    displayAllRecipes();
-    
-    addRecipeStyles();
-  } catch (error) {
-    console.error('Error loading data:', error);
-  }
+  await loadRecipesFromCSV();
+  filterRecipes('all');
+  renderNewRecipes();
+
 });
 
 // Mobile Navigation Toggle
@@ -42,7 +30,6 @@ if (hamburger) {
     spans.forEach(span => span.classList.toggle('active'));
   });
 }
-
 
 // Close mobile nav when clicking outside
 document.addEventListener('click', (e) => {
@@ -67,7 +54,6 @@ window.addEventListener('scroll', () => {
     header.classList.remove('scrolled');
   }
 });
-
 
 // Display by categories
 // This function renders category tabs and pushes overflow tabs into a "More" dropdown.
@@ -100,7 +86,7 @@ function renderCategoryTabsWithMore(categories) {
   const maxTabs = window.innerWidth > 768 ? 12 : categories.length;
 
   for (let i = 0; i < buttons.length && maxVisibleIndex < maxTabs; i++) {
-    const btnWidth = buttons[i].offsetWidth + 20;
+    const btnWidth = buttons[i].offsetWidth + 10;
     if ((currentWidth + btnWidth) < availableWidth) {
       currentWidth += btnWidth;
       maxVisibleIndex = i + 1;
@@ -144,10 +130,21 @@ function renderCategoryTabsWithMore(categories) {
     wrapper.appendChild(dropdown);
     tabsContainer.appendChild(wrapper);
 
-    moreBtn.addEventListener('click', () => dropdown.classList.toggle('show'));
-    document.addEventListener('click', e => {
-      if (!wrapper.contains(e.target)) dropdown.classList.remove('show');
+    moreBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent triggering the global click listener
+      dropdown.classList.toggle('show');
+      moreBtn.classList.toggle('active');
     });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      const isClickInside = wrapper.contains(e.target);
+      if (!isClickInside) {
+        dropdown.classList.remove('show');
+        moreBtn.classList.remove('active');
+      }
+    });
+    
   }
 
   // Add event listeners
@@ -168,7 +165,6 @@ window.addEventListener('resize', () => {
   renderCategoryTabsWithMore(categories);
 });
 
-
 function setActiveCategory(name) {
   document.querySelectorAll('.category-tabs .tab').forEach(tab => {
     if (tab.dataset.category === name) {
@@ -179,62 +175,46 @@ function setActiveCategory(name) {
   });
 }
 
-// Example card creation inside your recipe rendering logic:
-function renderRecipes(recipes) {
-  recipeContainer.innerHTML = '';
-
-  recipes.forEach(recipe => {
-    const card = document.createElement('div');
-    card.className = 'recipe-card';
-    card.innerHTML = `
-      <img src="${recipe.image}" alt="${recipe.title}">
-      <h3>${recipe.title}</h3>
-      <p>${recipe.excerpt}</p>
-    `;
-
-    // Make sure each card links to the correct recipe-post.html with ID as a parameter
-    card.addEventListener('click', () => {
-      window.location.href = `recipe-post.html?id=${recipe.id}`;
-    });
-
-    recipeContainer.appendChild(card);
-  });
-}
 
 function renderRecipeCards(filteredRecipes) {
+  const recipeGrid = document.getElementById('recipe-grid');
+
   recipeGrid.innerHTML = '';
 
   filteredRecipes.forEach(recipe => {
     const card = document.createElement('div');
     card.className = 'recipe-card';
     card.innerHTML = `
-      <img src="${recipe.image}" alt="${recipe.title}" loading="lazy">
+
+    <div class="recipe-img">
+    <img src="${recipe.image}" alt="${recipe.title}">
+    </div>
+    <div class="recipe-content">
       <div class="recipe-meta">
-        <span class="category">${recipe.category.toUpperCase()}</span>
-        <h3>${recipe.title}</h3>
-        <div class="info">
-          <span><i class="far fa-clock"></i> ${recipe.totalTime || '30 mins'}</span>
-          <span class="stars">★★★★★</span>
-        </div>
+        <span class="recipe-category">${recipe.category}</span>
+        <span class="stars">★★★★★</span>
       </div>
+      <h3 class="recipe-title">${recipe.title}</h3>
+      <p class="recipe-excerpt">${recipe.excerpt}</p>
+      <div class="recipe-meta2">
+        <span><i class="far fa-clock"></i> ${recipe.totalTime || '30 mins'}</span>
+        <span><i class="difficulty-level"></i>${recipe.difficulty}</span>
+      </div>
+      <a href="/recipe-post.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+    </div>
     `;
-
-    card.addEventListener('click', () => {
-      window.location.href = `recipe-post.html?id=${recipe.id}`;
-    });
-
 
     recipeGrid.appendChild(card);
   });
 }
 
-
-
 function filterRecipes(category) {
+  const normalize = str => str.toLowerCase().replace(/\s+/g, '-');
   const filtered =
     category === 'all'
       ? recipes
-      : recipes.filter(r => r.category.toLowerCase() === category.toLowerCase());
+      : recipes.filter(r => normalize(r.category) === normalize(category));
+
 
   renderRecipeCards(filtered);
 }
@@ -242,165 +222,103 @@ function filterRecipes(category) {
 // CSS styles for dropdown (append to your global style file or <style> block)
 const dropdownStyle = document.createElement('style');
 dropdownStyle.textContent = `
-  .tab-dropdown {
-    position: relative;
+.tab-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 8px;
+  margin: 0;
+  z-index: 10;
+  grid-template-columns: repeat(2, max-content);
+  gap: 4px 24px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.tab-dropdown .dropdown-menu li {
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.tab-dropdown .dropdown-menu li:hover {
+  background: #f7f7f7;
   }
-  .tab-dropdown .dropdown-menu {
-    display: none;
-    position: absolute;
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    z-index: 10;
-  }
-  .tab-dropdown .dropdown-menu li {
-    padding: 8px 16px;
-    cursor: pointer;
-  }
-  .tab-dropdown .dropdown-menu li:hover {
-    background-color: #f0f0f0;
-  }
-  .tab-dropdown .dropdown-menu.show {
-    display: block;
-  }
+
+.tab-dropdown .dropdown-menu li:active {
+  border-bottom: 2px solid var(--primary-light);
+  color: var(--primary-color);
+}
+
+.tab-dropdown .dropdown-menu.show {
+  display: grid;
+}
+
 `;
 document.head.appendChild(dropdownStyle);
 
+// Display New recipes
+function renderNewRecipes() {
+  const NewRecipesContainer = document.getElementById('new-recipes-container');
+  if (!NewRecipesContainer) return;
 
-// Load everything
-document.addEventListener('DOMContentLoaded', () => {
-  loadCategoriesFromCSV(() => {
-    renderCategoryTabs();
-    renderCategoryNavMenu();
-  });
+  const sortedRecipes = recipes
+    .slice()
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 8);
 
-  loadRecipesFromCSV().then(() => {
-    filterRecipes('all');
-  });
-});
-
-
-// Display all recipes
-function displayAllRecipes() {
-  
-  if (!allRecipesContainer) return;
-
-  allRecipesContainer.innerHTML = '';
-  
-  recipes.forEach(recipe => {
-    const recipeElement = document.createElement('article');
-    recipeElement.className = 'article-card';
+  sortedRecipes.forEach(recipe => {
+    const recipeElement = document.createElement('div');
+    recipeElement.className = 'new-recipe-card';
     recipeElement.innerHTML = `
-      <div class="article-img">
+      <div class="new-recipe-card-img">
         <img src="${recipe.image}" alt="${recipe.title}">
       </div>
-      <div class="article-content">
-        <div class="article-meta">
-          <span class="article-category">${recipe.category}</span>
-          <span class="article-date">${recipe.date}</span>
-        </div>
-        <h3 class="article-title">${recipe.title}</h3>
-        <p class="article-excerpt">${recipe.excerpt}</p>
-        <a href="/recipe-post.html?id=${recipe.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+      <div class="new-recipe-card-content">
+        <h4>${recipe.title}</h4>
+        <span class="new-recipe-date">${recipe.date}</span>
+        <p class="new-recipe-excerpt">${recipe.excerpt}</p>
+        <a href="/recipe-post.html?id=${recipe.id}" class="read-more2">Read More <i class="fas fa-arrow-right"></i></a>
       </div>
     `;
-    
-    allRecipesContainer.appendChild(recipeElement);
+    recipeElement.addEventListener('click', () => {
+      window.location.href = `/pages/recipe-post.html?id=${recipe.id}`;
+    });
+    NewRecipesContainer.appendChild(recipeElement);
   });
 }
+
 
 // Add styles specific to recipes page
 function addRecipeStyles() {
-  const style = document.createElement('style');
-  style.textContent = `
-    /* Page Banner */
-    .page-banner {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img21.webp');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 100px 0 60px;
-      margin-bottom: var(--space-lg);
-    }
-    
-    .page-banner h1 {
-      color: white;
-      margin-bottom: var(--space-xs);
-    }
-    
-    /* Recipe Categories */
-    .categories-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: var(--space-md);
-      margin-bottom: var(--space-xl);
-    }
-    
-    .category-item {
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform var(--transition-speed) ease;
-      text-align: center;
-      background-color: white;
-    }
-    
-    .category-item:hover {
-      transform: translateY(-5px);
-    }
-    
-    .category-img {
-      height: 150px;
-      overflow: hidden;
-    }
-    
-    .category-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform var(--transition-speed) ease;
-    }
-    
-    .category-item:hover .category-img img {
-      transform: scale(1.05);
-    }
-    
-    .category-item h3 {
-      padding: var(--space-sm) var(--space-sm) var(--space-xs);
-      font-size: 1.2rem;
-    }
-    
-    .category-link {
-      display: inline-block;
-      padding: 0 var(--space-sm) var(--space-sm);
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-    
-  `;
-  document.head.appendChild(style);
+  const recipePageStyle = document.createElement('style');
+  recipePageStyle.textContent = `
+  /* Recipe Categories and Banner styles */
+
+  .page-banner {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://cdn.jsdelivr.net/gh/sfanxak/-TheTastyJournal/media/TTJ-img21.webp');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 0 40px;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .page-banner h1 {
+    color: white;
+    margin-bottom: var(--space-xs);
+  }
+   `;
+  document.head.appendChild(recipePageStyle);
 }
 
-// Initialize the page
-document.addEventListener('DOMContentLoaded', () => {
-  loadCategoriesFromCSV(() => {
-    displayCategories(); 
-  });
-
-  loadRecipesFromCSV(() => {
-    displayAllRecipes();
-  });
-
-  addRecipeStyles();
-});
-
-
 // Add CSS for animations that were referenced in the JS
-const style = document.createElement('style');
-style.textContent = `
+const animationStyle = document.createElement('style');
+animationStyle.textContent = `
+  /* Animation and header behavior */
+
   .fade-in {
     animation: fadeIn 0.8s ease forwards;
   }
@@ -431,4 +349,8 @@ style.textContent = `
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   }
 `;
-document.head.appendChild(style);
+document.head.appendChild(animationStyle);
+
+
+
+

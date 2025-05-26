@@ -1,29 +1,42 @@
 import { loadRecipesFromCSV, recipes } from './data.js';
 
 export function setupSearch() {
-  const searchInput = document.getElementById('search-input');
-  const searchBtn = document.getElementById('search-btn');
+  const searchInputs = [
+    document.getElementById('search-input'),
+    document.getElementById('mobile-search-input'),
+    document.getElementById('hero-search-input')
+  ].filter(Boolean);
+
+  const searchButtons = [
+    document.getElementById('search-btn'),
+    document.getElementById('mobile-search-btn'),
+    document.getElementById('hero-search-btn')
+  ].filter(Boolean);
 
   function performSearch(searchTerm) {
     window.location.href = `/pages/search-results.html?search=${encodeURIComponent(searchTerm)}`;
   }
 
-  if (searchBtn) {
-    searchBtn.addEventListener('click', () => {
-      if (searchInput && searchInput.value.trim()) {
-        performSearch(searchInput.value.trim());
+  // Attach click event to each button
+  searchButtons.forEach((btn, index) => {
+    const relatedInput = searchInputs[index] || searchInputs[0];
+    btn.addEventListener('click', () => {
+      const term = relatedInput.value.trim();
+      if (term) performSearch(term);
+    });
+  });
+
+  // Attach Enter key event to each input
+  searchInputs.forEach(input => {
+    input.addEventListener('keypress', e => {
+      if (e.key === 'Enter') {
+        const term = input.value.trim();
+        if (term) performSearch(term);
       }
     });
-  }
+  });
 
-  if (searchInput) {
-    searchInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' && searchInput.value.trim()) {
-        performSearch(searchInput.value.trim());
-      }
-    });
-  }
-
+  // Display search results if on search-results.html
   document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('search');
@@ -82,5 +95,5 @@ function renderRecipes(container, recipesList) {
     container.appendChild(article);
   });
 }
-setupSearch();
 
+setupSearch();

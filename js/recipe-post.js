@@ -4,6 +4,8 @@ import { setupSearch } from './search.js';
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const mobileNav = document.querySelector('.mobile-nav');
+const header = document.querySelector('header');
+
 
 // Mobile Navigation Toggle
 if (hamburger) {
@@ -203,10 +205,16 @@ async function init() {
   });
 
 
-  // New Recipes in Sidebar
-  const newRecipesList = document.getElementById('new-recipes-list');
-const newPosts = recipes.filter(r => r.id !== recipe.id).slice(0, 4);
-newPosts.forEach(post => {
+ // New Recipes in Sidebar
+const newRecipesList = document.getElementById('new-recipes-list');
+
+// Sort recipes by date (newest first)m
+const sortedRecipes = recipes
+  .filter(r => r.date !== recipe.date) // exclude current recipe
+  .sort((a, b) => new Date(b.date) - new Date(a.date)) // descending by date
+  .slice(0, 4); // show top 4
+
+sortedRecipes.forEach(post => {
   const postItem = document.createElement('div');
   postItem.className = 'new-recipe-card';
   postItem.innerHTML = `
@@ -216,8 +224,12 @@ newPosts.forEach(post => {
       <span class="post-recipe-date">${post.date}</span>
     </div>
   `;
+  postItem.addEventListener('click', () => {
+    window.location.href = `recipe-post.html?id=${post.id}`;
+  });
   newRecipesList.appendChild(postItem);
 });
+
   // Lazy loading
   const images = document.querySelectorAll('img[loading="lazy"]');
   if (!('loading' in HTMLImageElement.prototype)) {
